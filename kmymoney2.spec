@@ -1,12 +1,12 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	0.6
-Release:	1
+Version:	0.6.1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
-# Source0-md5:	9cf0e358adb7756c0bf546155808e7ce
+# Source0-md5:	8d486e52ede480c8c9db313ac53aa716
 URL:		http://kmymoney2.sourceforge.net/
 BuildRequires:	arts-qt-devel
 BuildRequires:	artsc-devel
@@ -21,29 +21,30 @@ Windows-based finance software. We are a full double-entry accounting
 software package, for personal or small-business use.
 
 %description -l pl
-kmymoney2 to programowanie KDE do prowadzenia osobistych finansów.
+KMyMoney stara siê byæ w pe³ni funkcjonalnym zastêpstwem dla Twoich
+Windowsowych programów finansowych. Jest to oprogramowanie o podwójnej
+roli, do u¿ytku osobistego i dla ma³ych firm.
 
 %prep
 %setup -q
 
 %build
 %configure
-
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/kmymoney2.desktop \
-	$RPM_BUILD_ROOT%{_desktopdir}/kde
+	$RPM_BUILD_ROOT%{_desktopdir}
 
 echo "Categories=Qt;KDE;Utility;" >> \
-	$RPM_BUILD_ROOT%{_desktopdir}/kde/kmymoney2.desktop
+	$RPM_BUILD_ROOT%{_desktopdir}/kmymoney2.desktop
 
 %find_lang %{name} --with-kde
 
@@ -55,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/*
 %{_desktopdir}/*
-%{_desktopdir}/kde/*
+%{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
 %{_mandir}/man1/*
