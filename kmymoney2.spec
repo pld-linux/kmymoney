@@ -12,6 +12,7 @@ BuildRequires:	arts-qt-devel
 BuildRequires:	artsc-devel
 BuildRequires:	kdelibs-devel >= 9:3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
