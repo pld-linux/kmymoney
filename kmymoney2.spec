@@ -1,5 +1,5 @@
-Summary:	Personal finance software for KDE
-Summary(pl):	Oprogramowanie KDE do prowadzenia osobistych finansów
+Summary:	Personal finance application similar to Microsoft Money
+Summary(pl):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	0.6
 Release:	1
@@ -16,7 +16,9 @@ BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-kmymoney2 is a personal finance software for KDE.
+KMyMoney is striving to be a full-featured replacement for your
+Windows-based finance software. We are a full double-entry accounting
+software package, for personal or small-business use.
 
 %description -l pl
 kmymoney2 to programowanie KDE do prowadzenia osobistych finansów.
@@ -31,12 +33,11 @@ kmymoney2 to programowanie KDE do prowadzenia osobistych finansów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
-
-install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/kmymoney2.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde
@@ -52,8 +53,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_desktopdir}/*
 %{_datadir}/apps/*
+%{_desktopdir}/*
 %{_desktopdir}/kde/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
