@@ -5,7 +5,7 @@ Version:	0.6.1
 Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
 # Source0-md5:	8d486e52ede480c8c9db313ac53aa716
 URL:		http://kmymoney2.sourceforge.net/
 BuildRequires:	arts-qt-devel
@@ -21,8 +21,8 @@ Windows-based finance software. We are a full double-entry accounting
 software package, for personal or small-business use.
 
 %description -l pl
-KMyMoney stara siê byæ w pe³ni funkcjonalnym zastêpstwem dla Twoich
-Windowsowych programów finansowych. Jest to oprogramowanie o podwójnej
+KMyMoney stara siê byæ w pe³ni funkcjonalnym zamiennikiem dla
+windowsowych programów finansowych. Jest to oprogramowanie o podwójnej
 roli, do u¿ytku osobistego i dla ma³ych firm.
 
 %prep
@@ -55,7 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/apps/*
-%{_desktopdir}/*
 %{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
