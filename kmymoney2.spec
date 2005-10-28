@@ -2,7 +2,7 @@ Summary:	Personal finance application similar to Microsoft Money
 Summary(pl):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	0.6.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
@@ -46,6 +46,8 @@ mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/kmymoney2.desktop \
 echo "Categories=Qt;KDE;Utility;" >> \
 	$RPM_BUILD_ROOT%{_desktopdir}/kmymoney2.desktop
 
+mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
+
 %find_lang %{name} --with-kde
 
 %clean
@@ -54,7 +56,21 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/apps/*
+%dir %{_datadir}/apps/kmymoney2
+%{_datadir}/apps/kmymoney2/default_accounts_en*
+%lang(de) %{_datadir}/apps/kmymoney2/default_accounts_de.dat
+%lang(fr) %{_datadir}/apps/kmymoney2/comptes_par_defaut_fr.dat
+%lang(pt) %{_datadir}/apps/kmymoney2/default_accounts_ptPT.dat
+%lang(ru) %{_datadir}/apps/kmymoney2/default_accounts_ruSU.dat
+%dir %{_datadir}/apps/kmymoney2/html
+%{_datadir}/apps/kmymoney2/html/home.html
+%lang(de) %{_datadir}/apps/kmymoney2/html/home_de.de.html
+%lang(fr) %{_datadir}/apps/kmymoney2/html/home_fr.fr.html
+%lang(ru) %{_datadir}/apps/kmymoney2/html/home_ru.ru.html
+%{_datadir}/apps/kmymoney2/icons
+%{_datadir}/apps/kmymoney2/pics
+%{_datadir}/apps/kmymoney2/tips
+%{_datadir}/apps/kmymoney2/kmymoney2ui.rc
 %{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
