@@ -27,21 +27,20 @@ windowsowych programów finansowych. Jest to oprogramowanie o podwójnej
 roli, do u¿ytku osobistego i dla ma³ych firm.
 
 %package devel
-Summary:	kmymoney2 - header files and development documentation
-Summary(pl):	kmymoney2 - pliki nag³ówkowe i dokumentacja do kdelibs
-Summary(pt_BR):	Arquivos de inclusão e documentação para compilar aplicativos kmymoney2
-Summary(ru):	èÅÄÅÒÙ É ÄÏËÕÍÅÎÔÁÃÉÑ ÄÌÑ ËÏÍĞÉÌÌÑÃÉÉ ĞÒÏÇÒÁÍÍ kmymoney2
-Summary(uk):	èÅÄÅÒÉ ÔÁ ÄÏËÕÍÅÎÔÁÃ¦Ñ ÄÌÑ ËÏÍĞ¦ÌÑÃ¦§ ĞÒÏÇÒÁÍ kmymoney2
+Summary:	kmymoney2 - header files
+Summary(pl):	kmymoney2 - pliki nag³ówkowe
+Summary(pt_BR):	Arquivos de inclusão para compilar aplicativos kmymoney2
+Summary(ru):	èÅÄÅÒÙ ÄÌÑ ËÏÍĞÉÌÌÑÃÉÉ ĞÒÏÇÒÁÍÍ kmymoney2
+Summary(uk):	èÅÄÅÒÉ ÄÌÑ ËÏÍĞ¦ÌÑÃ¦§ ĞÒÏÇÒÁÍ kmymoney2
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
-This package contains header files and development documentation for
-kMyMoney2.
+This package contains header files for kMyMoney2.
 
 %description devel -l pl
-Pakiet ten zawiera pliki nag³ówkowe i dokumentacjê potrzebn± przy
-pisaniu w³asnych programów wykorzystuj±cych kMyMoney2.
+Pakiet ten zawiera pliki nag³ówkowe potrzebne przy pisaniu w³asnych
+programów wykorzystuj±cych kMyMoney2.
 
 %description devel -l pt_BR
 Este pacote contém os arquivos de inclusão que são necessários para
@@ -53,8 +52,7 @@ kMyMoney2.
 
 %description devel -l uk
 ãÅÊ ĞÁËÅÔ Í¦ÓÔÉÔØ ÈÅÄÅÒÉ, ÎÅÏÂÈ¦ÄÎ¦ ÄÌÑ ËÏÍĞ¦ÌÑÃ¦§ ĞÒÏÇÒÁÍ ÄÌÑ
-kMyMoney2
-
+kMyMoney2.
 
 %prep
 %setup -q
@@ -83,9 +81,18 @@ mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
+%attr(755,root,root) %{_libdir}/kde3/kmm_ofximport.so
+%{_libdir}/kde3/kmm_ofximport.la
+%{_libdir}/libkmm_mymoney.la
+%{_libdir}/libkmm_plugin.la
 %dir %{_datadir}/apps/kmymoney2
 %dir %{_datadir}/apps/kmymoney2/templates
 %dir %{_datadir}/apps/kmymoney2/templates/C
@@ -103,7 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmymoney2/html/whats_new.html
 %{_datadir}/apps/kmymoney2/html/*.css
 %{_datadir}/apps/kmymoney2/html/images
-%lang(br) %{_datadir}/apps/kmymoney2/html/home_br.pt_BR.html
+%lang(pt_BR) %{_datadir}/apps/kmymoney2/html/home_br.pt_BR.html
 %lang(de) %{_datadir}/apps/kmymoney2/html/home_de.de.html
 %lang(de) %{_datadir}/apps/kmymoney2/html/whats_new_de.html
 %lang(fr) %{_datadir}/apps/kmymoney2/html/home_fr.fr.html
@@ -123,17 +130,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/*
 %{_datadir}/servicetypes/*
 %{_mandir}/man1/*
-%attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*
-%attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
-%attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
-%attr(755,root,root) %{_libdir}/libkmm_plugin.so.*
-%attr(755,root,root) %{_libdir}/kde3/kmm_ofximport.so
-%{_libdir}/kde3/kmm_ofximport.la
-%{_libdir}/libkmm_mymoney.la
-%{_libdir}/libkmm_plugin.la
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/kmymoney
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
+%{_includedir}/kmymoney
