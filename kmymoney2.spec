@@ -95,16 +95,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkmm_plugin.la
 %dir %{_datadir}/apps/kmymoney2
 %dir %{_datadir}/apps/kmymoney2/templates
-%dir %{_datadir}/apps/kmymoney2/templates/C
-%{_datadir}/apps/kmymoney2/templates/C/*
+%{_datadir}/apps/kmymoney2/templates/C
 %{_datadir}/apps/kmymoney2/templates/README
-%{_datadir}/apps/kmymoney2/templates/en_GB/*
-%{_datadir}/apps/kmymoney2/templates/en_US/*
-%lang(de) %{_datadir}/apps/kmymoney2/templates/de_DE/*
-%lang(fr) %{_datadir}/apps/kmymoney2/templates/fr_FR/*
-%lang(gl) %{_datadir}/apps/kmymoney2/templates/gl_ES/*
-%lang(pt_BR) %{_datadir}/apps/kmymoney2/templates/pt_BR/*
-%lang(ru) %{_datadir}/apps/kmymoney2/templates/ru_SU/*
+%{_datadir}/apps/kmymoney2/templates/en_GB
+%{_datadir}/apps/kmymoney2/templates/en_US
+%lang(de) %{_datadir}/apps/kmymoney2/templates/de_DE
+%lang(fr) %{_datadir}/apps/kmymoney2/templates/fr_FR
+%lang(gl) %{_datadir}/apps/kmymoney2/templates/gl_ES
+%lang(pt_BR) %{_datadir}/apps/kmymoney2/templates/pt_BR
+%lang(ru) %{_datadir}/apps/kmymoney2/templates/ru_SU
 %dir %{_datadir}/apps/kmymoney2/html
 %{_datadir}/apps/kmymoney2/html/home.html
 %{_datadir}/apps/kmymoney2/html/whats_new.html
