@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	kbanking	# kbanking support
+#
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
@@ -9,9 +13,12 @@ Source0:	http://dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
 # Source0-md5:	a944bcfb7556d20e79d6e8cfc1e30333
 Patch0:		%{name}-includehints.patch
 URL:		http://kmymoney2.sourceforge.net/
+%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel}
 BuildRequires:	arts-qt-devel
 BuildRequires:	artsc-devel
 BuildRequires:	kdelibs-devel >= 9:3.0
+BuildRequires:	libofx-devel
+BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -60,7 +67,8 @@ kMyMoney2.
 
 %build
 CONFIG_SHELL="/bin/bash" \
-%configure
+%configure \
+	%{?with_kbanking:--enable-kbanking}
 %{__make}
 
 %install
@@ -89,10 +97,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
-%attr(755,root,root) %{_libdir}/kde3/kmm_ofximport.so
-%{_libdir}/kde3/kmm_ofximport.la
 %{_libdir}/libkmm_mymoney.la
 %{_libdir}/libkmm_plugin.la
+%attr(755,root,root) %{_libdir}/kde3/kmm_ofximport.so
+%{_libdir}/kde3/kmm_ofximport.la
 %dir %{_datadir}/apps/kmymoney2
 %dir %{_datadir}/apps/kmymoney2/templates
 %{_datadir}/apps/kmymoney2/templates/C
