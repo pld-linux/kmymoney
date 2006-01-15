@@ -13,7 +13,7 @@ Source0:	http://dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
 # Source0-md5:	a944bcfb7556d20e79d6e8cfc1e30333
 Patch0:		%{name}-includehints.patch
 URL:		http://kmymoney2.sourceforge.net/
-%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel}
+%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 BuildRequires:	arts-qt-devel
 BuildRequires:	artsc-devel
 BuildRequires:	kdelibs-devel >= 9:3.0
@@ -61,14 +61,27 @@ kMyMoney2.
 Цей пакет м╕стить хедери, необх╕дн╕ для комп╕ляц╕╖ програм для
 kMyMoney2.
 
+%package kbanking
+Summary:	KBanking plugin for KMyMoney2
+Summary(pl):	Wtyczka KBanking dla KMyMoney2
+Group:		X11/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description kbanking
+KBanking plugin for KMyMoney2.
+
+%description kbanking -l pl
+Wtyczka KBanking dla KMyMoney2.
+
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 CONFIG_SHELL="/bin/bash" \
 %configure \
-	%{?with_kbanking:--enable-kbanking}
+	%{?with_kbanking:--enable-kbanking} \
+	--with-qt-libraries=%{_libdir}
 %{__make}
 
 %install
@@ -134,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/*
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
-%{_datadir}/services/*
+%{_datadir}/services/kmm_ofximport.desktop
 %{_datadir}/servicetypes/*
 %{_mandir}/man1/*
 
@@ -143,3 +156,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
 %{_includedir}/kmymoney
+
+%files kbanking
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/kmm_kbanking.so
+%{_libdir}/kde3/kmm_kbanking.la
+%{_datadir}/apps/kmm_kbanking
+%{_datadir}/services/kmm_kbanking.desktop
