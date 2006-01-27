@@ -143,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmymoney2/tips
 %{_datadir}/apps/kmymoney2/kmymoney2ui.rc
 %{_desktopdir}/*
-%{_iconsdir}/*/*/*/*
+%{_iconsdir}/hicolor/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
 %{_datadir}/services/kmm_ofximport.desktop
 %{_datadir}/servicetypes/*
