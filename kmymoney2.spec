@@ -93,6 +93,7 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 echo "Categories=Qt;KDE;Utility;" >> \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde/kmymoney2.desktop
 
+mv $RPM_BUILD_ROOT%{_iconsdir}/{l,L}ocolor
 mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
 
 %find_lang %{name} --with-kde
@@ -143,7 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmymoney2/tips
 %{_datadir}/apps/kmymoney2/kmymoney2ui.rc
 %{_desktopdir}/*
-%{_iconsdir}/hicolor/*/*/*
+%{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
 %{_datadir}/services/kmm_ofximport.desktop
 %{_datadir}/servicetypes/*
