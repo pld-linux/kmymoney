@@ -5,12 +5,12 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	0.8.2
+Version:	0.8.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://heanet.dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
-# Source0-md5:	ffb09eaba4f93cd47e9600a2cb6b02c5
+# Source0-md5:	eae0b003b4e9455c8a18943d86f27759
 URL:		http://kmymoney2.sourceforge.net/
 %{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 BuildRequires:	arts-qt-devel
