@@ -29,8 +29,8 @@ software package, for personal or small-business use.
 
 %description -l pl
 KMyMoney stara siê byæ w pe³ni funkcjonalnym zamiennikiem dla
-windowsowych programów finansowych. Jest to oprogramowanie o podwójnej
-roli, do u¿ytku osobistego i dla ma³ych firm.
+windowsowych programów finansowych. Jest to kompletny system podwójnego
+ksiêgowania przeznaczony do u¿ytku osobistego i dla ma³ych firm.
 
 %package devel
 Summary:	kmymoney2 - header files
