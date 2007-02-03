@@ -12,6 +12,7 @@ Group:		X11/Applications
 Source0:	http://heanet.dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
 # Source0-md5:	a39bcd548df8b4c6b9b5cf68d574a18e
 URL:		http://kmymoney2.sourceforge.net/
+Patch0:		%{name}-desktop.patch
 %{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 BuildRequires:	arts-qt-devel
 BuildRequires:	artsc-devel
@@ -74,6 +75,7 @@ Wtyczka KBanking dla KMyMoney2.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 CONFIG_SHELL="/bin/bash" \
@@ -89,9 +91,6 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
-
-echo "Categories=Qt;KDE;Utility;" >> \
-	$RPM_BUILD_ROOT%{_desktopdir}/kde/kmymoney2.desktop
 
 mv $RPM_BUILD_ROOT%{_iconsdir}/{l,L}ocolor
 mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
@@ -143,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmymoney2/pics
 %{_datadir}/apps/kmymoney2/tips
 %{_datadir}/apps/kmymoney2/kmymoney2ui.rc
-%{_desktopdir}/*.desktop
+%{_desktopdir}/kde/*.desktop
 %{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
 %{_datadir}/services/kmm_ofximport.desktop

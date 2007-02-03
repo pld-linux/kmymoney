@@ -1,0 +1,17 @@
+--- kmymoney2-0.8.5/kmymoney2/kmymoney2.desktop~	2007-02-02 14:12:08.000000000 +0100
++++ kmymoney2-0.8.5/kmymoney2/kmymoney2.desktop	2007-02-02 14:13:11.000000000 +0100
+@@ -4,11 +4,12 @@
+ Exec=kmymoney2
+ Comment=Personal Finance Manager
+ Comment[de]=Persönlicher Finanzassistent
+-Comment[fr]=
++Comment[pl]=Osobisty zarządca finansowy
+ MimeType=application/x-kmymoney;application/vnd.intu.qfx;application/x-ofx
+ Type=Application
++Terminal=false
+ DocPath=kmymoney2/index.html
+ Icon=kmymoney2
+ MiniIcon=kmymoney2
+ ServiceTypes=
+-Categories=Office;Finance
++Categories=Qt;KDE;Utility;
