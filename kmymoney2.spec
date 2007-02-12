@@ -3,7 +3,7 @@
 %bcond_without	kbanking	# kbanking support
 #
 Summary:	Personal finance application similar to Microsoft Money
-Summary(pl):	Program do finansÛw osobistych, podobny do Microsoft Money
+Summary(pl.UTF-8):   Program do finans√≥w osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	0.8.5
 Release:	1
@@ -28,49 +28,49 @@ KMyMoney is striving to be a full-featured replacement for your
 Windows-based finance software. We are a full double-entry accounting
 software package, for personal or small-business use.
 
-%description -l pl
-KMyMoney stara siÍ byÊ w pe≥ni funkcjonalnym zamiennikiem dla
-windowsowych programÛw finansowych. Jest to kompletny system podwÛjnego
-ksiÍgowania przeznaczony do uøytku osobistego i dla ma≥ych firm.
+%description -l pl.UTF-8
+KMyMoney stara siƒô byƒá w pe≈Çni funkcjonalnym zamiennikiem dla
+windowsowych program√≥w finansowych. Jest to kompletny system podw√≥jnego
+ksiƒôgowania przeznaczony do u≈ºytku osobistego i dla ma≈Çych firm.
 
 %package devel
 Summary:	kmymoney2 - header files
-Summary(pl):	kmymoney2 - pliki nag≥Ûwkowe
-Summary(pt_BR):	Arquivos de inclus„o para compilar aplicativos kmymoney2
-Summary(ru):	Ë≈ƒ≈“Ÿ ƒÃ— ÀœÕ–…ÃÃ—√…… –“œ«“¡ÕÕ kmymoney2
-Summary(uk):	Ë≈ƒ≈“… ƒÃ— ÀœÕ–¶Ã—√¶ß –“œ«“¡Õ kmymoney2
+Summary(pl.UTF-8):   kmymoney2 - pliki nag≈Ç√≥wkowe
+Summary(pt_BR.UTF-8):   Arquivos de inclus√£o para compilar aplicativos kmymoney2
+Summary(ru.UTF-8):   –•–µ–¥–µ—Ä—ã –¥–ª—è –∫–æ–º–ø–∏–ª–ª—è—Ü–∏–∏ –ø—Ä–æ–≥—Ä–∞–º–º kmymoney2
+Summary(uk.UTF-8):   –•–µ–¥–µ—Ä–∏ –¥–ª—è –∫–æ–º–ø—ñ–ª—è—Ü—ñ—ó –ø—Ä–æ–≥—Ä–∞–º kmymoney2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package contains header files for kMyMoney2.
 
-%description devel -l pl
-Pakiet ten zawiera pliki nag≥Ûwkowe potrzebne przy pisaniu w≥asnych
-programÛw wykorzystuj±cych kMyMoney2.
+%description devel -l pl.UTF-8
+Pakiet ten zawiera pliki nag≈Ç√≥wkowe potrzebne przy pisaniu w≈Çasnych
+program√≥w wykorzystujƒÖcych kMyMoney2.
 
-%description devel -l pt_BR
-Este pacote contÈm os arquivos de inclus„o que s„o necess·rios para
+%description devel -l pt_BR.UTF-8
+Este pacote cont√©m os arquivos de inclus√£o que s√£o necess√°rios para
 compilar aplicativos kMyMoney2.
 
-%description devel -l ru
-¸‘œ‘ –¡À≈‘ ”œƒ≈“÷…‘ »≈ƒ≈“Ÿ, Œ≈œ¬»œƒ…ÕŸ≈ ƒÃ— ÀœÕ–…Ã—√…… –“œ«“¡ÕÕ ƒÃ—
+%description devel -l ru.UTF-8
+–≠—Ç–æ—Ç –ø–∞–∫–µ—Ç —Å–æ–¥–µ—Ä–∂–∏—Ç —Ö–µ–¥–µ—Ä—ã, –Ω–µ–æ–±—Ö–æ–¥–∏–º—ã–µ –¥–ª—è –∫–æ–º–ø–∏–ª—è—Ü–∏–∏ –ø—Ä–æ–≥—Ä–∞–º–º –¥–ª—è
 kMyMoney2.
 
-%description devel -l uk
-„≈  –¡À≈‘ Õ¶”‘…‘ÿ »≈ƒ≈“…, Œ≈œ¬»¶ƒŒ¶ ƒÃ— ÀœÕ–¶Ã—√¶ß –“œ«“¡Õ ƒÃ—
+%description devel -l uk.UTF-8
+–¶–µ–π –ø–∞–∫–µ—Ç –º—ñ—Å—Ç–∏—Ç—å —Ö–µ–¥–µ—Ä–∏, –Ω–µ–æ–±—Ö—ñ–¥–Ω—ñ –¥–ª—è –∫–æ–º–ø—ñ–ª—è—Ü—ñ—ó –ø—Ä–æ–≥—Ä–∞–º –¥–ª—è
 kMyMoney2.
 
 %package kbanking
 Summary:	KBanking plugin for KMyMoney2
-Summary(pl):	Wtyczka KBanking dla KMyMoney2
+Summary(pl.UTF-8):   Wtyczka KBanking dla KMyMoney2
 Group:		X11/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description kbanking
 KBanking plugin for KMyMoney2.
 
-%description kbanking -l pl
+%description kbanking -l pl.UTF-8
 Wtyczka KBanking dla KMyMoney2.
 
 %prep
