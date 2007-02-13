@@ -3,7 +3,7 @@
 %bcond_without	kbanking	# kbanking support
 #
 Summary:	Personal finance application similar to Microsoft Money
-Summary(pl.UTF-8):   Program do finansów osobistych, podobny do Microsoft Money
+Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	0.8.5
 Release:	1
@@ -35,10 +35,10 @@ księgowania przeznaczony do użytku osobistego i dla małych firm.
 
 %package devel
 Summary:	kmymoney2 - header files
-Summary(pl.UTF-8):   kmymoney2 - pliki nagłówkowe
-Summary(pt_BR.UTF-8):   Arquivos de inclusão para compilar aplicativos kmymoney2
-Summary(ru.UTF-8):   Хедеры для компилляции программ kmymoney2
-Summary(uk.UTF-8):   Хедери для компіляції програм kmymoney2
+Summary(pl.UTF-8):	kmymoney2 - pliki nagłówkowe
+Summary(pt_BR.UTF-8):	Arquivos de inclusão para compilar aplicativos kmymoney2
+Summary(ru.UTF-8):	Хедеры для компилляции программ kmymoney2
+Summary(uk.UTF-8):	Хедери для компіляції програм kmymoney2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -63,7 +63,7 @@ kMyMoney2.
 
 %package kbanking
 Summary:	KBanking plugin for KMyMoney2
-Summary(pl.UTF-8):   Wtyczka KBanking dla KMyMoney2
+Summary(pl.UTF-8):	Wtyczka KBanking dla KMyMoney2
 Group:		X11/Libraries
 Requires:	%{name} = %{version}-%{release}
 
