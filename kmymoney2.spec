@@ -2,25 +2,26 @@
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
 #
+%define		real_name kmymoney
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	0.8.5
+Version:	4.5
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://heanet.dl.sourceforge.net/kmymoney2/%{name}-%{version}.tar.bz2
-# Source0-md5:	a39bcd548df8b4c6b9b5cf68d574a18e
+Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
+# Source0-md5:	a764fe259c7885f22a10049cef68398e
 URL:		http://kmymoney2.sourceforge.net/
-Patch0:		%{name}-desktop.patch
-%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
-BuildRequires:	arts-qt-devel
-BuildRequires:	artsc-devel
-BuildRequires:	kdelibs-devel >= 9:3.0
-BuildRequires:	libofx-devel
-BuildRequires:	libxml2-devel >= 2.0.0
-BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	xrender-devel
+#Patch0:		%{name}-desktop.patch
+#%%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
+#BuildRequires:	arts-qt-devel
+#BuildRequires:	artsc-devel
+#BuildRequires:	kdelibs-devel >= 9:3.0
+#BuildRequires:	libofx-devel
+#BuildRequires:	libxml2-devel >= 2.0.0
+BuildRequires:	rpmbuild(macros) >= 1.577
+#BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -74,28 +75,36 @@ KBanking plugin for KMyMoney2.
 Wtyczka KBanking dla KMyMoney2.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n kmymoney-%{version}
+#%%patch0 -p1
 
 %build
-CONFIG_SHELL="/bin/bash" \
-%configure \
-	%{?with_kbanking:--enable-kbanking} \
-	--with-qt-libraries=%{_libdir}
+#CONFIG_SHELL="/bin/bash" \
+#%%configure \
+#%	%{?with_kbanking:--enable-kbanking} \
+#%	--with-qt-libraries=%{_libdir}
+
+install -d build
+cd build
+%cmake ..
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
+#%%{__make} install \
+#	DESTDIR=$RPM_BUILD_ROOT \
+#	kde_htmldir=%{_kdedocdir}
 
-mv $RPM_BUILD_ROOT%{_iconsdir}/{l,L}ocolor
-mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
+%{__make} -C build install \
+	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-kde
+#mv $RPM_BUILD_ROOT%{_iconsdir}/{l,L}ocolor
+#mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
+
+%find_lang %{real_name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,9 +112,32 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{name}.lang
+%files -f %{real_name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/kmymoney
+%dir %{_datadir}/apps/kmymoney/
+%{_datadir}/apps/kmymoney/icons
+%{_datadir}/apps/kmymoney/pics
+%dir %{_datadir}/apps/kmymoney/templates
+%lang(en_GB) %{_datadir}/apps/kmymoney/templates/en_GB
+%lang(en_US) %{_datadir}/apps/kmymoney/templates/en_US
+%lang(it) %{_datadir}/apps/kmymoney/templates/it
+%lang(pt_BR) %{_datadir}/apps/kmymoney/templates/pt_BR
+%lang(sk) %{_datadir}/apps/kmymoney/templates/sk
+%lang(zh_CN) %{_datadir}/apps/kmymoney/templates/zh_CN
+%lang(zh_HK) %{_datadir}/apps/kmymoney/templates/zh_HK
+%lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
+%{_datadir}/apps/kmymoney/tips
+%dir %{_iconsdir}/*
+%dir %{_iconsdir}/*/*
+%dir %{_iconsdir}/*/*/*
+%{_iconsdir}/*/*/*/*.png
+%{_datadir}/kde4/services/*.desktop
+%{_datadir}/kde4/servicetypes/*.desktop
+%{_mandir}/man1/kmymoney.1*
+
+
+%if 0
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
 %{_libdir}/libkmm_mymoney.la
@@ -118,11 +150,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmymoney2/templates/README
 %{_datadir}/apps/kmymoney2/templates/en_GB
 %{_datadir}/apps/kmymoney2/templates/en_US
-%lang(de) %{_datadir}/apps/kmymoney2/templates/de_DE
-%lang(fr) %{_datadir}/apps/kmymoney2/templates/fr_FR
-%lang(gl) %{_datadir}/apps/kmymoney2/templates/gl_ES
-%lang(pt_BR) %{_datadir}/apps/kmymoney2/templates/pt_BR
-%lang(ru) %{_datadir}/apps/kmymoney2/templates/ru_SU
 %dir %{_datadir}/apps/kmymoney2/html
 %{_datadir}/apps/kmymoney2/html/home.html
 %{_datadir}/apps/kmymoney2/html/whats_new.html
@@ -138,26 +165,21 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/apps/kmymoney2/html/home_it.html
 %lang(it) %{_datadir}/apps/kmymoney2/html/whats_new_it.html
 %lang(ru) %{_datadir}/apps/kmymoney2/html/home_ru.ru.html
-%{_datadir}/apps/kmymoney2/icons
-%{_datadir}/apps/kmymoney2/pics
-%{_datadir}/apps/kmymoney2/tips
 %{_datadir}/apps/kmymoney2/kmymoney2ui.rc
 %{_desktopdir}/kde/*.desktop
-%{_iconsdir}/*/*/*/*
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
-%{_datadir}/services/kmm_ofximport.desktop
-%{_datadir}/servicetypes/*
-%{_mandir}/man1/*
+%endif
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
-%{_includedir}/kmymoney
+%dir %{_includedir}/kmymoney
+%{_includedir}/kmymoney/*.h
 
 %files kbanking
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde3/kmm_kbanking.so
-%{_libdir}/kde3/kmm_kbanking.la
-%{_datadir}/apps/kmm_kbanking
-%{_datadir}/services/kmm_kbanking.desktop
+#%%attr(755,root,root) %{_libdir}/kde3/kmm_kbanking.so
+#%%{_libdir}/kde3/kmm_kbanking.la
+#%%{_datadir}/apps/kmm_kbanking
+#%%{_datadir}/services/kmm_kbanking.desktop
