@@ -15,7 +15,7 @@ Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
 # Source0-md5:	a764fe259c7885f22a10049cef68398e
 URL:		http://kmymoney2.sourceforge.net/
-#Patch0: %{name}-desktop.patch
+Patch0:		%{name}-desktop.patch
 #%%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 #BuildRequires:	arts-qt-devel
 #BuildRequires:	artsc-devel
@@ -84,7 +84,7 @@ Wtyczka KBanking dla KMyMoney2.
 
 %prep
 %setup -q -n kmymoney-%{version}
-#%%patch0 -p1
+%patch0 -p1
 
 %build
 #CONFIG_SHELL="/bin/bash" \
