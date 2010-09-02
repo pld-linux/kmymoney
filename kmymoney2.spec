@@ -1,4 +1,6 @@
 #
+# TODO: - do something with rest of templates
+#
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
 #
@@ -146,6 +148,11 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_HK) %{_datadir}/apps/kmymoney/templates/zh_HK
 %lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
 %{_datadir}/apps/kmymoney/tips
+%{_datadir}/apps/kmymoney/kmymoneyui.rc
+%dir %{_datadir}/apps/kmm_ofximport
+%{_datadir}/apps/kmm_ofximport/kmm_ofximport.rc
+%dir %{_datadir}/apps/kmm_printcheck
+%{_datadir}/apps/kmm_printcheck/kmm_printcheck.rc
 %dir %{_iconsdir}/*
 %dir %{_iconsdir}/*/*
 %dir %{_iconsdir}/*/*/*
@@ -154,27 +161,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
 %{_mandir}/man1/kmymoney.1*
-
-
-%if 0
-%dir %{_datadir}/apps/kmymoney2/html
-%{_datadir}/apps/kmymoney2/html/home.html
-%{_datadir}/apps/kmymoney2/html/whats_new.html
-%{_datadir}/apps/kmymoney2/html/*.css
-%{_datadir}/apps/kmymoney2/html/images
-%lang(pt_BR) %{_datadir}/apps/kmymoney2/html/home_br.pt_BR.html
-%lang(de) %{_datadir}/apps/kmymoney2/html/home_de.de.html
-%lang(de) %{_datadir}/apps/kmymoney2/html/whats_new_de.html
-%lang(fr) %{_datadir}/apps/kmymoney2/html/home_fr.fr.html
-%lang(fr) %{_datadir}/apps/kmymoney2/html/whats_new_fr.html
-%lang(gl) %{_datadir}/apps/kmymoney2/html/home_gl.html
-%lang(gl) %{_datadir}/apps/kmymoney2/html/whats_new_gl.html
-%lang(it) %{_datadir}/apps/kmymoney2/html/home_it.html
-%lang(it) %{_datadir}/apps/kmymoney2/html/whats_new_it.html
-%lang(ru) %{_datadir}/apps/kmymoney2/html/home_ru.ru.html
-%{_desktopdir}/kde/*.desktop
-%{_datadir}/mimelnk/application/x-kmymoney2.desktop
-%endif
 
 %files devel
 %defattr(644,root,root,755)
