@@ -25,6 +25,7 @@ BuildRequires:	libassuan-devel
 #BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pth-devel
 BuildRequires:	rpmbuild(macros) >= 1.577
+BuildRequires:	soprano-devel
 #BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
