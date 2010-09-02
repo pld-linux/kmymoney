@@ -17,9 +17,13 @@ URL:		http://kmymoney2.sourceforge.net/
 #%%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 #BuildRequires:	arts-qt-devel
 #BuildRequires:	artsc-devel
-#BuildRequires:	kdelibs-devel >= 9:3.0
+BuildRequires:	automoc4
+BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	kde4-kdepimlibs-devel
+BuildRequires:	libassuan-devel
 #BuildRequires:	libofx-devel
 #BuildRequires:	libxml2-devel >= 2.0.0
+BuildRequires:	pth-devel
 BuildRequires:	rpmbuild(macros) >= 1.577
 #BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
