@@ -1,17 +1,45 @@
---- kmymoney2-0.8.5/kmymoney2/kmymoney2.desktop~	2007-02-02 14:12:08.000000000 +0100
-+++ kmymoney2-0.8.5/kmymoney2/kmymoney2.desktop	2007-02-02 14:13:11.000000000 +0100
-@@ -4,11 +4,12 @@
- Exec=kmymoney2
- Comment=Personal Finance Manager
- Comment[de]=Persönlicher Finanzassistent
--Comment[fr]=
+--- kmymoney-4.5/kmymoney/kmymoney.desktop~	2010-08-16 12:52:36.000000000 +0200
++++ kmymoney-4.5/kmymoney/kmymoney.desktop	2010-09-02 22:59:11.936962336 +0200
+@@ -1,18 +1,5 @@
+ [Desktop Entry]
+ Name=KMyMoney
+-Name[cs]=KMyMoney
+-Name[de]=KMyMoney
+-Name[en_GB]=KMyMoney
+-Name[es]=KMyMoney
+-Name[fr]=KMyMoney
+-Name[it]=KMyMoney
+-Name[nds]=KMyMoney
+-Name[nl]=KMyMoney
+-Name[pt]=KMyMoney
+-Name[pt_BR]=KMyMoney
+-Name[sv]=KMyMoney
+-Name[uk]=KMyMoney
+-Name[x-test]=xxKMyMoneyxx
+ GenericName=Personal Finance Manager
+ GenericName[cs]=Osobní správce financí
+ GenericName[de]=Persönlicher Finanzmanager
+@@ -22,6 +9,7 @@
+ GenericName[it]=Gestore delle finanze personali
+ GenericName[nds]=Geldsaken plegen
+ GenericName[nl]=Persoonlijk financieel beheer
++GenericName[pl]=Osobisty zarządca finansowy
+ GenericName[pt]=Gestor de Finanças Pessoais
+ GenericName[pt_BR]=Gerenciador de finanças pessoais
+ GenericName[sv]=Personlig ekonomihantering
+@@ -37,13 +25,13 @@
+ Comment[it]=Gestore delle finanze personali
+ Comment[nds]=Geldsaken plegen
+ Comment[nl]=Persoonlijk financieel beheerder
 +Comment[pl]=Osobisty zarządca finansowy
- MimeType=application/x-kmymoney;application/vnd.intu.qfx;application/x-ofx
+ Comment[pt]=Gestor de Finanças Pessoais
+ Comment[pt_BR]=Gerenciador de finanças pessoais
+ Comment[sv]=Personlig ekonomihantering
+ Comment[uk]=Особисте керування фінансами
+ Comment[x-test]=xxPersonal Finance Managerxx
+-MimeType=application/x-kmymoney;application/vnd.intu.qfx;application/x-ofx;
  Type=Application
-+Terminal=false
- DocPath=kmymoney2/index.html
- Icon=kmymoney2
- MiniIcon=kmymoney2
- ServiceTypes=
--Categories=Office;Finance
+ X-DocPath=kmymoney/index.html
+ Icon=kmymoney
+-Categories=Office;Finance;
 +Categories=Qt;KDE;Utility;
