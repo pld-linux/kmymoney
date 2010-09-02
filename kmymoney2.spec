@@ -8,12 +8,12 @@ Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	4.5
 Release:	0.1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
 # Source0-md5:	a764fe259c7885f22a10049cef68398e
 URL:		http://kmymoney2.sourceforge.net/
-#Patch0:		%{name}-desktop.patch
+#Patch0: %{name}-desktop.patch
 #%%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 #BuildRequires:	arts-qt-devel
 #BuildRequires:	artsc-devel
@@ -36,8 +36,9 @@ software package, for personal or small-business use.
 
 %description -l pl.UTF-8
 KMyMoney stara się być w pełni funkcjonalnym zamiennikiem dla
-windowsowych programów finansowych. Jest to kompletny system podwójnego
-księgowania przeznaczony do użytku osobistego i dla małych firm.
+windowsowych programów finansowych. Jest to kompletny system
+podwójnego księgowania przeznaczony do użytku osobistego i dla małych
+firm.
 
 %package devel
 Summary:	kmymoney2 - header files
@@ -120,6 +121,18 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{real_name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kmymoney
+%attr(755,root,root) %{_libdir}/libkmm_kdchart.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_kdchart.so.4
+%attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_mymoney.so.4
+%attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_plugin.so.4
+%attr(755,root,root) %{_libdir}/libkmm_widgets.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.4
+%attr(755,root,root) %{_libdir}/kde4/kcm_kmm_printcheck.so
+%attr(755,root,root) %{_libdir}/kde4/kmm_ofximport.so
+%attr(755,root,root) %{_libdir}/kde4/kmm_printcheck.so
+%attr(755,root,root) %{_libdir}/kde4/kmm_reconciliationreport.so
 %dir %{_datadir}/apps/kmymoney/
 %{_datadir}/apps/kmymoney/icons
 %{_datadir}/apps/kmymoney/pics
@@ -137,24 +150,13 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_iconsdir}/*/*
 %dir %{_iconsdir}/*/*/*
 %{_iconsdir}/*/*/*/*.png
+%{_desktopdir}/kde4/kmymoney.desktop
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
 %{_mandir}/man1/kmymoney.1*
 
 
 %if 0
-%attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
-%attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
-%{_libdir}/libkmm_mymoney.la
-%{_libdir}/libkmm_plugin.la
-%attr(755,root,root) %{_libdir}/kde3/kmm_ofximport.so
-%{_libdir}/kde3/kmm_ofximport.la
-%dir %{_datadir}/apps/kmymoney2
-%dir %{_datadir}/apps/kmymoney2/templates
-%{_datadir}/apps/kmymoney2/templates/C
-%{_datadir}/apps/kmymoney2/templates/README
-%{_datadir}/apps/kmymoney2/templates/en_GB
-%{_datadir}/apps/kmymoney2/templates/en_US
 %dir %{_datadir}/apps/kmymoney2/html
 %{_datadir}/apps/kmymoney2/html/home.html
 %{_datadir}/apps/kmymoney2/html/whats_new.html
@@ -170,15 +172,16 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %{_datadir}/apps/kmymoney2/html/home_it.html
 %lang(it) %{_datadir}/apps/kmymoney2/html/whats_new_it.html
 %lang(ru) %{_datadir}/apps/kmymoney2/html/home_ru.ru.html
-%{_datadir}/apps/kmymoney2/kmymoney2ui.rc
 %{_desktopdir}/kde/*.desktop
 %{_datadir}/mimelnk/application/x-kmymoney2.desktop
 %endif
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkmm_kdchart.so
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
+%attr(755,root,root) %{_libdir}/libkmm_widgets.so
 %dir %{_includedir}/kmymoney
 %{_includedir}/kmymoney/*.h
 
