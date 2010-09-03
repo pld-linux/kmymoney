@@ -21,12 +21,14 @@ Patch0:		%{name}-desktop.patch
 #BuildRequires:	artsc-devel
 BuildRequires:	automoc4
 BuildRequires:	cmake
+%{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 3.10.1}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libassuan-devel
 BuildRequires:	libofx-devel
 #BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pth-devel
+BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.577
 BuildRequires:	soprano-devel
 #BuildRequires:	xrender-devel
@@ -95,7 +97,8 @@ Wtyczka KBanking dla KMyMoney2.
 
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	%{?with_kbanking:-DENABLE_KBANKING="on"}
 
 %{__make}
 
