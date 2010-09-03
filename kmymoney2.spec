@@ -20,10 +20,11 @@ Patch0:		%{name}-desktop.patch
 #BuildRequires:	arts-qt-devel
 #BuildRequires:	artsc-devel
 BuildRequires:	automoc4
+BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libassuan-devel
-#BuildRequires:	libofx-devel
+BuildRequires:	libofx-devel
 #BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pth-devel
 BuildRequires:	rpmbuild(macros) >= 1.577
