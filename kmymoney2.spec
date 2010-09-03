@@ -1,22 +1,22 @@
 #
 # TODO: - do something with rest of templates
+#	- fix build with kbanking enabled
 #
 # Conditional build:
-%bcond_without	kbanking	# kbanking support
+%bcond_with	kbanking	# kbanking support
 #
 %define		real_name kmymoney
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	4.5
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
 # Source0-md5:	a764fe259c7885f22a10049cef68398e
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
-#%%{?with_kbanking:BuildRequires:	aqbanking-frontend-kbanking-devel >= 0.1.0.0}
 #BuildRequires:	arts-qt-devel
 #BuildRequires:	artsc-devel
 BuildRequires:	automoc4
@@ -90,10 +90,6 @@ Wtyczka KBanking dla KMyMoney2.
 %patch0 -p1
 
 %build
-#CONFIG_SHELL="/bin/bash" \
-#%%configure \
-#%	%{?with_kbanking:--enable-kbanking} \
-#%	--with-qt-libraries=%{_libdir}
 
 install -d build
 cd build
@@ -105,10 +101,6 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
-
-#%%{__make} install \
-#	DESTDIR=$RPM_BUILD_ROOT \
-#	kde_htmldir=%{_kdedocdir}
 
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
