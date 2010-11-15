@@ -1,6 +1,7 @@
 #
 # TODO: - do something with rest of templates
 #	- fix build with kbanking enabled
+#	- do we really need kmymoney2-devel package?
 #
 # Conditional build:
 %bcond_with	kbanking	# kbanking support
@@ -9,12 +10,12 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	4.5
+Version:	4.5.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
-# Source0-md5:	a764fe259c7885f22a10049cef68398e
+# Source0-md5:	b84e4871019a7f44848e65702c4ce3a2
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
 #BuildRequires:	arts-qt-devel
@@ -167,9 +168,11 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}/kmymoney
 %{_includedir}/kmymoney/*.h
 
+%if %{with server}
 %files kbanking
 %defattr(644,root,root,755)
 #%%attr(755,root,root) %{_libdir}/kde3/kmm_kbanking.so
 #%%{_libdir}/kde3/kmm_kbanking.la
 #%%{_datadir}/apps/kmm_kbanking
 #%%{_datadir}/services/kmm_kbanking.desktop
+%endif
