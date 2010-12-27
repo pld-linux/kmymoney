@@ -10,12 +10,12 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	4.5.1
+Version:	4.5.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
-# Source0-md5:	b84e4871019a7f44848e65702c4ce3a2
+# Source0-md5:	c4b46a3e111e90802add05c8c0ae2d03
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
 #BuildRequires:	arts-qt-devel
@@ -128,7 +128,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libkmm_plugin.so.4
 %attr(755,root,root) %{_libdir}/libkmm_widgets.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.4
+%attr(755,root,root) %{_libdir}/kde4/kcm_kmm_icalendarexport.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kmm_printcheck.so
+%attr(755,root,root) %{_libdir}/kde4/kmm_icalendarexport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_ofximport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_printcheck.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_reconciliationreport.so
