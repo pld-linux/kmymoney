@@ -1,6 +1,6 @@
 #
 # TODO: - do something with rest of templates
-#	- fix build with kbanking enabled
+#	- fix build with kbanking enabled (fix build with aqbanking >= 5.0.0)
 #	- do we really need kmymoney2-devel package?
 #
 # Conditional build:
