@@ -1,25 +1,23 @@
 #
 # TODO: - do something with rest of templates
-#	- fix build with kbanking enabled (fix build with aqbanking >= 5.0.0)
 #	- do we really need kmymoney2-devel package?
 #
 # Conditional build:
-%bcond_with	kbanking	# kbanking support
+%bcond_without	kbanking	# kbanking support
 #
 %define		real_name kmymoney
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	4.5.2
+Version:	4.5.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://downloads.sourceforge.net/kmymoney2/%{version}/%{real_name}-%{version}.tar.bz2
-# Source0-md5:	c4b46a3e111e90802add05c8c0ae2d03
+Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.bz2
+# Source0-md5:	c7104b5267822cf1708a118af29af75b
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
-#BuildRequires:	arts-qt-devel
-#BuildRequires:	artsc-devel
+%{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.0.0}
 BuildRequires:	automoc4
 BuildRequires:	cmake
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 3.10.1}
@@ -27,12 +25,10 @@ BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libassuan-devel
 BuildRequires:	libofx-devel
-#BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pth-devel
 BuildRequires:	qt4-build
-BuildRequires:	rpmbuild(macros) >= 1.577
+BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRequires:	soprano-devel
-#BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -106,9 +102,6 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#mv $RPM_BUILD_ROOT%{_iconsdir}/{l,L}ocolor
-#mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
-
 %find_lang %{real_name} --with-kde
 
 %clean
@@ -170,11 +163,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}/kmymoney
 %{_includedir}/kmymoney/*.h
 
-%if %{with server}
+%if %{with kbanking}
 %files kbanking
 %defattr(644,root,root,755)
-#%%attr(755,root,root) %{_libdir}/kde3/kmm_kbanking.so
-#%%{_libdir}/kde3/kmm_kbanking.la
-#%%{_datadir}/apps/kmm_kbanking
-#%%{_datadir}/services/kmm_kbanking.desktop
+%attr(755,root,root) %{_libdir}/kde4/kmm_kbanking.so
 %endif
