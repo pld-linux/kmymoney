@@ -24,6 +24,7 @@ BuildRequires:	cmake
 %{?with_kbanking:BuildRequires:	gwenhywfar-qt-devel >= 4.0.0}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
+BuildRequires:	libalkimia-devel
 BuildRequires:	libassuan-devel
 BuildRequires:	libofx-devel >= 0.9.4
 BuildRequires:	pth-devel
