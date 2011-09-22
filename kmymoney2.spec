@@ -20,7 +20,8 @@ Patch0:		%{name}-desktop.patch
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.0.0}
 BuildRequires:	automoc4
 BuildRequires:	cmake
-%{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 3.10.1}
+%{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.0.0}
+%{?with_kbanking:BuildRequires:	gwenhywfar-qt-devel >= 4.0.0}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libassuan-devel
