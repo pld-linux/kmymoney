@@ -129,6 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.4
 %attr(755,root,root) %{_libdir}/kde4/kcm_kmm_icalendarexport.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kmm_printcheck.so
+%attr(755,root,root) %{_libdir}/kde4/kmm_csvimport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_icalendarexport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_ofximport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_printcheck.so
@@ -147,6 +148,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
 %{_datadir}/apps/kmymoney/tips
 %{_datadir}/apps/kmymoney/kmymoneyui.rc
+%dir %{_datadir}/apps/kmm_csvimport
+%{_datadir}/apps/kmm_csvimport/kmm_csvimport.rc
+%dir %{_datadir}/apps/kmm_icalendarexport
+%{_datadir}/apps/kmm_icalendarexport/kmm_icalendarexport.rc
 %dir %{_datadir}/apps/kmm_ofximport
 %{_datadir}/apps/kmm_ofximport/kmm_ofximport.rc
 %dir %{_datadir}/apps/kmm_printcheck
@@ -173,4 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 %files kbanking
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kmm_kbanking.so
+%dir %{_datadir}/apps/kmm_kbanking
+%{_datadir}/apps/kmm_kbanking/kmm_kbanking.rc
 %endif
