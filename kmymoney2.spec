@@ -24,7 +24,7 @@ BuildRequires:	cmake
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libassuan-devel
-BuildRequires:	libofx-devel
+BuildRequires:	libofx-devel >= 0.9.4
 BuildRequires:	pth-devel
 BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.600
