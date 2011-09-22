@@ -2,6 +2,7 @@
 # TODO: - do something with rest of templates
 #	- do we really need kmymoney2-devel package?
 #	- drop fr_translation.patch when french translation is fixed
+#	- consider rename to kmymoney
 #
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
