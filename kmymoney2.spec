@@ -1,6 +1,7 @@
 #
 # TODO: - do something with rest of templates
 #	- do we really need kmymoney2-devel package?
+#	- drop fr_translation.patch when french translation is fixed
 #
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
@@ -17,6 +18,7 @@ Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.
 # Source0-md5:	166131b53da426643bd40a0ca6f5c022
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-fr_translation.patch
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.0.0}
 BuildRequires:	automoc4
 BuildRequires:	cmake
@@ -24,6 +26,7 @@ BuildRequires:	cmake
 %{?with_kbanking:BuildRequires:	gwenhywfar-qt-devel >= 4.0.0}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
+BuildRequires:	gpgme-devel
 BuildRequires:	libalkimia-devel >= 4.3.1
 BuildRequires:	libassuan-devel
 BuildRequires:	libofx-devel >= 0.9.4
@@ -87,6 +90,7 @@ Wtyczka KBanking dla KMyMoney2.
 %prep
 %setup -q -n kmymoney-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 
