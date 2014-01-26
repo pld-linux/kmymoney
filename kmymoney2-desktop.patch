@@ -1,35 +1,5 @@
 --- kmymoney-4.6.0/kmymoney/kmymoney.desktop~	2011-08-09 07:48:32.000000000 +0200
 +++ kmymoney-4.6.0/kmymoney/kmymoney.desktop	2011-09-22 08:56:19.820372194 +0200
-@@ -1,29 +1,5 @@
- [Desktop Entry]
- Name=KMyMoney
--Name[bs]=KMyMoney
--Name[ca]=KMyMoney
--Name[ca@valencia]=KMyMoney
--Name[cs]=KMyMoney
--Name[da]=KMyMoney
--Name[de]=KMyMoney
--Name[el]=KMyMoney
--Name[en_GB]=KMyMoney
--Name[es]=KMyMoney
--Name[eu]=KMyMoney
--Name[fr]=KMyMoney
--Name[it]=KMyMoney
--Name[nds]=KMyMoney
--Name[nl]=KMyMoney
--Name[pl]=KMyMoney
--Name[pt]=KMyMoney
--Name[pt_BR]=KMyMoney
--Name[ro]=KMyMoney
--Name[ru]=KMyMoney
--Name[sv]=KMyMoney
--Name[uk]=KMyMoney
--Name[x-test]=xxKMyMoneyxx
--Name[zh_CN]=KMyMoney
--Name[zh_TW]=KMyMoney
- GenericName=Personal Finance Manager
- GenericName[bs]=Ličnni upravljač finansija
- GenericName[ca]=Gestor de les finances personals
 @@ -79,4 +55,4 @@
  Type=Application
  X-DocPath=kmymoney/index.html

@@ -11,12 +11,12 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
-Version:	4.6.0
+Version:	4.6.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.bz2
-# Source0-md5:	166131b53da426643bd40a0ca6f5c022
+Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.xz
+# Source0-md5:	0674b9ef7ed5447e6a88b56a834389f8
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-fr_translation.patch
@@ -30,7 +30,9 @@ BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	libalkimia-devel >= 4.3.1
 BuildRequires:	libassuan-devel
+BuildRequires:	libical-c++-devel
 BuildRequires:	libofx-devel >= 0.9.4
+BuildRequires:	libxml++-devel
 BuildRequires:	pth-devel
 BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.600
@@ -137,13 +139,37 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kmm_reconciliationreport.so
 %dir %{_datadir}/apps/kmymoney/
 %{_datadir}/apps/kmymoney/icons
+%{_datadir}/apps/kmymoney/html
+%{_datadir}/apps/kmymoney/misc
 %{_datadir}/apps/kmymoney/pics
 %dir %{_datadir}/apps/kmymoney/templates
+%{_datadir}/apps/kmymoney/templates/C
+%lang(de_AT) %{_datadir}/apps/kmymoney/templates/de_AT
+%lang(de_CH) %{_datadir}/apps/kmymoney/templates/de_CH
+%lang(de_DE) %{_datadir}/apps/kmymoney/templates/de_DE
+%lang(dk) %{_datadir}/apps/kmymoney/templates/dk
+%lang(el_GR) %{_datadir}/apps/kmymoney/templates/el_GR
+%lang(en_CA) %{_datadir}/apps/kmymoney/templates/en_CA
 %lang(en_GB) %{_datadir}/apps/kmymoney/templates/en_GB
 %lang(en_US) %{_datadir}/apps/kmymoney/templates/en_US
+%lang(es_AR) %{_datadir}/apps/kmymoney/templates/es_AR
+%lang(es_ES) %{_datadir}/apps/kmymoney/templates/es_ES
+%lang(es_MX) %{_datadir}/apps/kmymoney/templates/es_MX
+%lang(fr_CA) %{_datadir}/apps/kmymoney/templates/fr_CA
+%lang(fr_CH) %{_datadir}/apps/kmymoney/templates/fr_CH
+%lang(fr_FR) %{_datadir}/apps/kmymoney/templates/fr_FR
+%lang(gl_ES) %{_datadir}/apps/kmymoney/templates/gl_ES
+%lang(hu_HU) %{_datadir}/apps/kmymoney/templates/hu_HU
 %lang(it) %{_datadir}/apps/kmymoney/templates/it
+%lang(ja) %{_datadir}/apps/kmymoney/templates/jp
+%lang(nl_NL) %{_datadir}/apps/kmymoney/templates/nl_NL
+%lang(pt_PT) %{_datadir}/apps/kmymoney/templates/pt_PT
 %lang(pt_BR) %{_datadir}/apps/kmymoney/templates/pt_BR
 %lang(sk) %{_datadir}/apps/kmymoney/templates/sk
+%lang(ro_RO) %{_datadir}/apps/kmymoney/templates/ro_RO
+%lang(ru_RU) %{_datadir}/apps/kmymoney/templates/ru_RU
+%lang(tr_TR) %{_datadir}/apps/kmymoney/templates/tr_TR
+%lang(uk_UA) %{_datadir}/apps/kmymoney/templates/uk_UA
 %lang(zh_CN) %{_datadir}/apps/kmymoney/templates/zh_CN
 %lang(zh_HK) %{_datadir}/apps/kmymoney/templates/zh_HK
 %lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
@@ -156,7 +182,12 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/kmm_ofximport
 %{_datadir}/apps/kmm_ofximport/kmm_ofximport.rc
 %dir %{_datadir}/apps/kmm_printcheck
+%{_datadir}/apps/kmm_printcheck/check_template.html
+%{_datadir}/apps/kmm_printcheck/check_template_green_linen.html
 %{_datadir}/apps/kmm_printcheck/kmm_printcheck.rc
+%{_datadir}/config.kcfg/kmymoney.kcfg
+%{_datadir}/config/csvimporterrc
+%{_datadir}/mime/packages/x-kmymoney.xml
 %dir %{_iconsdir}/*
 %dir %{_iconsdir}/*/*
 %dir %{_iconsdir}/*/*/*
