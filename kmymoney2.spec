@@ -6,13 +6,13 @@
 #
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
-#
+
 %define		real_name kmymoney
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	4.6.4
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.xz
@@ -23,11 +23,11 @@ Patch1:		%{name}-fr_translation.patch
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.0.0}
 BuildRequires:	automoc4
 BuildRequires:	cmake
+BuildRequires:	gpgme-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.0.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-qt-devel >= 4.0.0}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
-BuildRequires:	gpgme-devel
 BuildRequires:	libalkimia-devel >= 4.3.1
 BuildRequires:	libassuan-devel
 BuildRequires:	libical-c++-devel
@@ -113,6 +113,9 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %find_lang %{real_name} --with-kde
 
+# not supported in pld
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/locolor
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -188,10 +191,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kmymoney.kcfg
 %{_datadir}/config/csvimporterrc
 %{_datadir}/mime/packages/x-kmymoney.xml
-%dir %{_iconsdir}/*
-%dir %{_iconsdir}/*/*
-%dir %{_iconsdir}/*/*/*
-%{_iconsdir}/*/*/*/*.png
+%{_iconsdir}/hicolor/*/apps/kmymoney.png
+%{_iconsdir}/hicolor/*/mimetypes/kmy.png
 %{_desktopdir}/kde4/kmymoney.desktop
 %{_datadir}/kde4/services/*.desktop
 %{_datadir}/kde4/servicetypes/*.desktop
