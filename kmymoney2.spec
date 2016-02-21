@@ -32,7 +32,7 @@ BuildRequires:	libalkimia-devel >= 4.3.1
 BuildRequires:	libassuan-devel
 BuildRequires:	libical-c++-devel
 BuildRequires:	libofx-devel >= 0.9.4
-BuildRequires:	libxml++-devel
+BuildRequires:	libxml++2-devel
 BuildRequires:	pth-devel
 BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.600
