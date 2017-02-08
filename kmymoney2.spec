@@ -1,6 +1,5 @@
 #
 # TODO: - do something with rest of templates
-#	- do we really need kmymoney2-devel package?
 #	- drop fr_translation.patch when french translation is fixed
 #	- consider rename to kmymoney
 #
@@ -25,7 +24,7 @@ BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	gpgme-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.0.0}
-%{?with_kbanking:BuildRequires:	gwenhywfar-qt-devel >= 4.0.0}
+%{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt4-devel >= 4.0.0}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kde4-kdepimlibs-devel
 BuildRequires:	libalkimia-devel >= 4.3.1
@@ -96,7 +95,6 @@ Wtyczka KBanking dla KMyMoney2.
 %patch1 -p1
 
 %build
-
 install -d build
 cd build
 %cmake .. \
@@ -140,7 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kmm_ofximport.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_printcheck.so
 %attr(755,root,root) %{_libdir}/kde4/kmm_reconciliationreport.so
-%dir %{_datadir}/apps/kmymoney/
+%dir %{_datadir}/apps/kmymoney
 %{_datadir}/apps/kmymoney/icons
 %{_datadir}/apps/kmymoney/html
 %{_datadir}/apps/kmymoney/misc
@@ -194,8 +192,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/kmymoney.png
 %{_iconsdir}/hicolor/*/mimetypes/kmy.png
 %{_desktopdir}/kde4/kmymoney.desktop
-%{_datadir}/kde4/services/*.desktop
-%{_datadir}/kde4/servicetypes/*.desktop
+%{_datadir}/kde4/services/kcm_kmm_icalendarexport.desktop
+%{_datadir}/kde4/services/kcm_kmm_printcheck.desktop
+%{_datadir}/kde4/services/kmm_csvimport.desktop
+%{_datadir}/kde4/services/kmm_icalendarexport.desktop
+%{_datadir}/kde4/services/kmm_kbanking.desktop
+%{_datadir}/kde4/services/kmm_ofximport.desktop
+%{_datadir}/kde4/services/kmm_printcheck.desktop
+%{_datadir}/kde4/services/kmm_reconciliationreport.desktop
+%{_datadir}/kde4/servicetypes/kmymoneyimporterplugin.desktop
+%{_datadir}/kde4/servicetypes/kmymoneyplugin.desktop
 %{_mandir}/man1/kmymoney.1*
 
 %files devel
@@ -204,8 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
 %attr(755,root,root) %{_libdir}/libkmm_widgets.so
-%dir %{_includedir}/kmymoney
-%{_includedir}/kmymoney/*.h
+%{_includedir}/kmymoney
 
 %if %{with kbanking}
 %files kbanking
