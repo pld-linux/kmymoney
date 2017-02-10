@@ -19,6 +19,7 @@ Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.
 URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-man.patch
+Patch2:		%{name}-types.patch
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.5.1}
 BuildRequires:	automoc4
 BuildRequires:	boost-devel >= 1.33.1
@@ -108,6 +109,7 @@ Wtyczka KBanking dla KMyMoney2.
 %setup -q -n kmymoney-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 install -d build
