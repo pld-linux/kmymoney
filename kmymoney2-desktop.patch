@@ -1,8 +1,9 @@
---- kmymoney-4.6.0/kmymoney/kmymoney.desktop~	2011-08-09 07:48:32.000000000 +0200
-+++ kmymoney-4.6.0/kmymoney/kmymoney.desktop	2011-09-22 08:56:19.820372194 +0200
-@@ -79,4 +55,4 @@
+--- kmymoney-4.8.0/kmymoney/kmymoney.desktop.orig	2016-06-14 21:16:15.571035117 +0200
++++ kmymoney-4.8.0/kmymoney/kmymoney.desktop	2017-02-09 20:51:56.676477194 +0100
+@@ -109,5 +109,5 @@
  Type=Application
  X-DocPath=kmymoney/index.html
  Icon=kmymoney
 -Categories=Office;Finance;
-+Categories=Qt;KDE;Utility;
++Categories=Qt;KDE;Office;Finance;
+ StartupWMClass=Kmymoney

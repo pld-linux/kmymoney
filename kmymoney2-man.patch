@@ -1,0 +1,5 @@
+--- kmymoney-4.8.0/doc/en_US/CMakeLists.txt.orig	2016-06-14 21:17:17.537030935 +0200
++++ kmymoney-4.8.0/doc/en_US/CMakeLists.txt	2017-02-09 21:21:41.597329522 +0100
+@@ -1 +1,2 @@
+ kde4_create_handbook(index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/en SUBDIR kmymoney )
++kde4_create_manpage(man-kmymoney.1.docbook 1 INSTALL_DESTINATION ${MAN_INSTALL_DIR})
