@@ -11,7 +11,7 @@ Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	4.8.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.xz
@@ -105,6 +105,19 @@ KBanking plugin for KMyMoney2.
 %description kbanking -l pl.UTF-8
 Wtyczka KBanking dla KMyMoney2.
 
+%package -n QtDesigner-plugin-kmymoney
+Summary:	KMyMoney specific widget library for QtDesigner
+Summary(pl.UTF-8):	Biblioteka widgetów KMyMoney dla QtDesignera
+Group:		X11/Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	QtDesigner >= 4
+
+%description -n QtDesigner-plugin-kmymoney
+KMyMoney specific widget library for QtDesigner.
+
+%description -n QtDesigner-plugin-kmymoney -l pl.UTF-8
+Biblioteka widgetów KMyMoney dla QtDesignera.
+
 %prep
 %setup -q -n kmymoney-%{version}
 %patch0 -p1
@@ -126,6 +139,9 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/apps/appdata \
+	$RPM_BUILD_ROOT%{_datadir}
 
 %find_lang %{real_name} --with-kde
 
@@ -211,8 +227,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
 %{_datadir}/apps/kmymoney/tips
 %{_datadir}/apps/kmymoney/kmymoneyui.rc
-# ???
-%{_datadir}/apps/appdata/kmymoney.appdata.xml
 %{_datadir}/apps/kconf_update/kmymoney.upd
 %{_datadir}/apps/kmm_csvexport
 %{_datadir}/apps/kmm_csvimport
@@ -220,6 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmm_ofximport
 %{_datadir}/apps/kmm_printcheck
 %{_datadir}/apps/kmm_weboob
+%{_datadir}/appdata/kmymoney.appdata.xml
 %{_datadir}/config/csvimporterrc
 %{_datadir}/config.kcfg/kmymoney.kcfg
 %{_datadir}/mime/packages/x-kmymoney.xml
@@ -257,9 +272,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kmymoney.png
 %{_mandir}/man1/kmymoney.1*
 
-# TODO: QtDesigner-kmymoney
-%attr(755,root,root) %{_libdir}/qt4/plugins/designer/kmymoneywidgets.so
-
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkmm_kdchart.so
@@ -278,3 +290,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kmm_kbanking
 %{_datadir}/config.kcfg/kbanking.kcfg
 %endif
+
+%files -n QtDesigner-plugin-kmymoney
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/qt4/plugins/designer/kmymoneywidgets.so
