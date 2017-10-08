@@ -11,7 +11,7 @@ Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney2
 Version:	4.8.0
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.xz
@@ -20,6 +20,7 @@ URL:		http://kmymoney2.sourceforge.net/
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-man.patch
 Patch2:		%{name}-types.patch
+Patch3:		0240-Fix-duplicated-symbol-compile-error-on-Windows.patch
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.5.1}
 BuildRequires:	automoc4
 BuildRequires:	boost-devel >= 1.33.1
@@ -123,6 +124,7 @@ Biblioteka widgetów KMyMoney dla QtDesignera.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 install -d build
