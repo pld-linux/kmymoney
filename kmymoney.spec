@@ -15,10 +15,7 @@ Group:		X11/Applications
 Source0:	https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 # Source0-md5:	386a53cac09052aba2a343badabe4256
 URL:		https://kmymoney.org/
-#Patch0:		%{name}-desktop.patch
-#Patch1:		%{name}-man.patch
-#Patch2:		%{name}-types.patch
-#Patch3:		0240-Fix-duplicated-symbol-compile-error-on-Windows.patch
+Patch0:		qt-deprecated.patch
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Widgets-devel
@@ -134,17 +131,14 @@ Biblioteka widgetów KMyMoney dla QtDesignera.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
+%patch0 -p1
 
 %build
 install -d build
 cd build
 %cmake .. \
 	%{?with_kbanking:-DENABLE_KBANKING=ON} \
-	-DUSE_QT_DESIGNER=ON
+	-DUSE_QT_DESIGNER=OFF
 
 %{__make}
 
@@ -155,13 +149,7 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/apps/appdata \
-	$RPM_BUILD_ROOT%{_datadir}
-
-%find_lang %{real_name} --with-kde
-
-# not supported in pld
-%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/locolor
+%find_lang %{name} --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -169,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{real_name}.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS README.Fileformats TODO
 %attr(755,root,root) %{_bindir}/kmymoney
