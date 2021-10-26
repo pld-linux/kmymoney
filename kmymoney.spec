@@ -45,7 +45,7 @@ BuildRequires:	doxygen
 BuildRequires:	gmp-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-cpp-devel >= 4.13.0}
-#%{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
+%{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
 BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
 BuildRequires:	libofx-devel >= 0.9.4
