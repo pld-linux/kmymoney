@@ -1,22 +1,20 @@
 #
 # TODO: - do something with rest of templates
-#	- consider rename to kmymoney
 #	- sqlcipher plugin (BR: sqlcipher-devel + qsqlite sources)
 #
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
 
-%define		real_name kmymoney
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
-Name:		kmymoney2
-Version:	4.8.0
-Release:	5
+Name:		kmymoney
+Version:	5.1.2
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://downloads.sourceforge.net/kmymoney2/%{real_name}-%{version}.tar.xz
-# Source0-md5:	a1cc5f862493f1abc1f660ffed4f1711
-URL:		http://kmymoney2.sourceforge.net/
+Source0:	https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+# Source0-md5:	386a53cac09052aba2a343badabe4256
+URL:		https://kmymoney.org/
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-man.patch
 Patch2:		%{name}-types.patch
@@ -62,37 +60,37 @@ podwójnego księgowania przeznaczony do użytku osobistego i dla małych
 firm.
 
 %package devel
-Summary:	kmymoney2 - header files
-Summary(pl.UTF-8):	kmymoney2 - pliki nagłówkowe
-Summary(pt_BR.UTF-8):	Arquivos de inclusão para compilar aplicativos kmymoney2
-Summary(ru.UTF-8):	Хедеры для компилляции программ kmymoney2
-Summary(uk.UTF-8):	Хедери для компіляції програм kmymoney2
+Summary:	kmymoney - header files
+Summary(pl.UTF-8):	kmymoney - pliki nagłówkowe
+Summary(pt_BR.UTF-8):	Arquivos de inclusão para compilar aplicativos kmymoney
+Summary(ru.UTF-8):	Хедеры для компилляции программ kmymoney
+Summary(uk.UTF-8):	Хедери для компіляції програм kmymoney
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	kde4-kdelibs-devel >= 4.6.0
 
 %description devel
-This package contains header files for kMyMoney2.
+This package contains header files for kMyMoney.
 
 %description devel -l pl.UTF-8
 Pakiet ten zawiera pliki nagłówkowe potrzebne przy pisaniu własnych
-programów wykorzystujących kMyMoney2.
+programów wykorzystujących kMyMoney.
 
 %description devel -l pt_BR.UTF-8
 Este pacote contém os arquivos de inclusão que são necessários para
-compilar aplicativos kMyMoney2.
+compilar aplicativos kMyMoney.
 
 %description devel -l ru.UTF-8
 Этот пакет содержит хедеры, необходимые для компиляции программ для
-kMyMoney2.
+kMyMoney.
 
 %description devel -l uk.UTF-8
 Цей пакет містить хедери, необхідні для компіляції програм для
-kMyMoney2.
+kMyMoney.
 
 %package kbanking
-Summary:	KBanking plugin for KMyMoney2
-Summary(pl.UTF-8):	Wtyczka KBanking dla KMyMoney2
+Summary:	KBanking plugin for KMyMoney
+Summary(pl.UTF-8):	Wtyczka KBanking dla KMyMoney
 Group:		X11/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	aqbanking >= 5.5.1
@@ -101,10 +99,10 @@ Requires:	gwenhywfar-gui-cpp >= 4.13.0
 Requires:	gwenhywfar-gui-qt4 >= 4.13.0
 
 %description kbanking
-KBanking plugin for KMyMoney2.
+KBanking plugin for KMyMoney.
 
 %description kbanking -l pl.UTF-8
-Wtyczka KBanking dla KMyMoney2.
+Wtyczka KBanking dla KMyMoney.
 
 %package -n QtDesigner-plugin-kmymoney
 Summary:	KMyMoney specific widget library for QtDesigner
@@ -120,7 +118,7 @@ KMyMoney specific widget library for QtDesigner.
 Biblioteka widgetów KMyMoney dla QtDesignera.
 
 %prep
-%setup -q -n kmymoney-%{version}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
