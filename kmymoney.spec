@@ -48,6 +48,9 @@ BuildRequires:	gmp-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
 BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
+# These two are not needed, but libical cmake file is broken
+BuildRequires:	libical-glib-static
+BuildRequires:	libical-static
 BuildRequires:	libofx-devel >= 0.9.4
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel
