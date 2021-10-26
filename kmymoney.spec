@@ -176,101 +176,56 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libpayeeidentifier_iban_bic_widgets.so.4
 %attr(755,root,root) %{_libdir}/libpayeeidentifier_nationalAccount.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpayeeidentifier_nationalAccount.so.4
-%attr(755,root,root) %{_libdir}/kde4/kcm_kmm_icalendarexport.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kmm_printcheck.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_csvexport.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_csvimport.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_icalendarexport.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_ofximport.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_printcheck.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_reconciliationreport.so
-%attr(755,root,root) %{_libdir}/kde4/kmm_weboob.so
-%attr(755,root,root) %{_libdir}/kde4/konlinetasks_national.so
-%attr(755,root,root) %{_libdir}/kde4/konlinetasks_sepa.so
-%attr(755,root,root) %{_libdir}/kde4/payeeidentifier_iban_bic_delegates.so
-%attr(755,root,root) %{_libdir}/kde4/payeeidentifier_ibanbic_storageplugin.so
-%attr(755,root,root) %{_libdir}/kde4/payeeidentifier_nationalAccount_ui.so
-%attr(755,root,root) %{_libdir}/kde4/payeeidentifier_nationalaccount_storageplugin.so
-%dir %{_datadir}/apps/kmymoney
-%{_datadir}/apps/kmymoney/icons
-%{_datadir}/apps/kmymoney/html
-%{_datadir}/apps/kmymoney/ibanbicdata
-%{_datadir}/apps/kmymoney/misc
-%{_datadir}/apps/kmymoney/pics
-%dir %{_datadir}/apps/kmymoney/templates
-%{_datadir}/apps/kmymoney/templates/C
-%lang(de_AT) %{_datadir}/apps/kmymoney/templates/de_AT
-%lang(de_CH) %{_datadir}/apps/kmymoney/templates/de_CH
-%lang(de_DE) %{_datadir}/apps/kmymoney/templates/de_DE
-%lang(dk) %{_datadir}/apps/kmymoney/templates/dk
-%lang(el_GR) %{_datadir}/apps/kmymoney/templates/el_GR
-%lang(en_CA) %{_datadir}/apps/kmymoney/templates/en_CA
-%lang(en_GB) %{_datadir}/apps/kmymoney/templates/en_GB
-%lang(en_US) %{_datadir}/apps/kmymoney/templates/en_US
-%lang(es_AR) %{_datadir}/apps/kmymoney/templates/es_AR
-%lang(es_ES) %{_datadir}/apps/kmymoney/templates/es_ES
-%lang(es_MX) %{_datadir}/apps/kmymoney/templates/es_MX
-%lang(fr_CA) %{_datadir}/apps/kmymoney/templates/fr_CA
-%lang(fr_CH) %{_datadir}/apps/kmymoney/templates/fr_CH
-%lang(fr_FR) %{_datadir}/apps/kmymoney/templates/fr_FR
-%lang(gl_ES) %{_datadir}/apps/kmymoney/templates/gl_ES
-%lang(hu_HU) %{_datadir}/apps/kmymoney/templates/hu_HU
-%lang(it) %{_datadir}/apps/kmymoney/templates/it
-%lang(ja) %{_datadir}/apps/kmymoney/templates/jp
-%lang(nl_NL) %{_datadir}/apps/kmymoney/templates/nl_NL
-%lang(pt_PT) %{_datadir}/apps/kmymoney/templates/pt_PT
-%lang(pt_BR) %{_datadir}/apps/kmymoney/templates/pt_BR
-%lang(sk) %{_datadir}/apps/kmymoney/templates/sk
-%lang(ro_RO) %{_datadir}/apps/kmymoney/templates/ro_RO
-%lang(ru_RU) %{_datadir}/apps/kmymoney/templates/ru_RU
-%lang(tr_TR) %{_datadir}/apps/kmymoney/templates/tr_TR
-%lang(uk_UA) %{_datadir}/apps/kmymoney/templates/uk_UA
-%lang(zh_CN) %{_datadir}/apps/kmymoney/templates/zh_CN
-%lang(zh_HK) %{_datadir}/apps/kmymoney/templates/zh_HK
-%lang(zh_TW) %{_datadir}/apps/kmymoney/templates/zh_TW
-%{_datadir}/apps/kmymoney/tips
-%{_datadir}/apps/kmymoney/kmymoneyui.rc
-%{_datadir}/apps/kconf_update/kmymoney.upd
-%{_datadir}/apps/kmm_csvexport
-%{_datadir}/apps/kmm_csvimport
-%{_datadir}/apps/kmm_icalendarexport
-%{_datadir}/apps/kmm_ofximport
-%{_datadir}/apps/kmm_printcheck
-%{_datadir}/apps/kmm_weboob
+%dir %{_datadir}/kmymoney
+%{_datadir}/kmymoney/icons
+%{_datadir}/kmymoney/html
+%{_datadir}/kmymoney/ibanbicdata
+%{_datadir}/kmymoney/misc
+%{_datadir}/kmymoney/pics
+%dir %{_datadir}/kmymoney/templates
+%{_datadir}/kmymoney/templates/C
+%lang(de_AT) %{_datadir}/kmymoney/templates/de_AT
+%lang(de_CH) %{_datadir}/kmymoney/templates/de_CH
+%lang(de_DE) %{_datadir}/kmymoney/templates/de_DE
+%lang(dk) %{_datadir}/kmymoney/templates/dk
+%lang(el_GR) %{_datadir}/kmymoney/templates/el_GR
+%lang(en_CA) %{_datadir}/kmymoney/templates/en_CA
+%lang(en_GB) %{_datadir}/kmymoney/templates/en_GB
+%lang(en_US) %{_datadir}/kmymoney/templates/en_US
+%lang(es_AR) %{_datadir}/kmymoney/templates/es_AR
+%lang(es_ES) %{_datadir}/kmymoney/templates/es_ES
+%lang(es_MX) %{_datadir}/kmymoney/templates/es_MX
+%lang(fr_CA) %{_datadir}/kmymoney/templates/fr_CA
+%lang(fr_CH) %{_datadir}/kmymoney/templates/fr_CH
+%lang(fr_FR) %{_datadir}/kmymoney/templates/fr_FR
+%lang(gl_ES) %{_datadir}/kmymoney/templates/gl_ES
+%lang(hu_HU) %{_datadir}/kmymoney/templates/hu_HU
+%lang(it) %{_datadir}/kmymoney/templates/it
+%lang(ja) %{_datadir}/kmymoney/templates/jp
+%lang(nl_NL) %{_datadir}/kmymoney/templates/nl_NL
+%lang(pt_PT) %{_datadir}/kmymoney/templates/pt_PT
+%lang(pt_BR) %{_datadir}/kmymoney/templates/pt_BR
+%lang(sk) %{_datadir}/kmymoney/templates/sk
+%lang(ro_RO) %{_datadir}/kmymoney/templates/ro_RO
+%lang(ru_RU) %{_datadir}/kmymoney/templates/ru_RU
+%lang(tr_TR) %{_datadir}/kmymoney/templates/tr_TR
+%lang(uk_UA) %{_datadir}/kmymoney/templates/uk_UA
+%lang(zh_CN) %{_datadir}/kmymoney/templates/zh_CN
+%lang(zh_HK) %{_datadir}/kmymoney/templates/zh_HK
+%lang(zh_TW) %{_datadir}/kmymoney/templates/zh_TW
+%{_datadir}/kmymoney/tips
+%{_datadir}/kmymoney/kmymoneyui.rc
+%{_datadir}/kconf_update/kmymoney.upd
+%{_datadir}/kmm_csvexport
+%{_datadir}/kmm_csvimport
+%{_datadir}/kmm_icalendarexport
+%{_datadir}/kmm_ofximport
+%{_datadir}/kmm_printcheck
+%{_datadir}/kmm_weboob
 %{_datadir}/appdata/kmymoney.appdata.xml
 %{_datadir}/config/csvimporterrc
 %{_datadir}/config.kcfg/kmymoney.kcfg
 %{_datadir}/mime/packages/x-kmymoney.xml
-%dir %{_datadir}/kde4/services/ibanbicdata
-%{_datadir}/kde4/services/ibanbicdata/germany.desktop
-%{_datadir}/kde4/services/kcm_kmm_icalendarexport.desktop
-%{_datadir}/kde4/services/kcm_kmm_printcheck.desktop
-%{_datadir}/kde4/services/kmm_csvexport.desktop
-%{_datadir}/kde4/services/kmm_csvimport.desktop
-%{_datadir}/kde4/services/kmm_icalendarexport.desktop
-%{_datadir}/kde4/services/kmm_kbanking.desktop
-%{_datadir}/kde4/services/kmm_ofximport.desktop
-%{_datadir}/kde4/services/kmm_printcheck.desktop
-%{_datadir}/kde4/services/kmm_reconciliationreport.desktop
-%{_datadir}/kde4/services/kmm_weboob.desktop
-%{_datadir}/kde4/services/kmymoney-ibanbic-delegate.desktop
-%{_datadir}/kde4/services/kmymoney-ibanbic-storageplugin.desktop
-%{_datadir}/kde4/services/kmymoney-nationalaccount-delegate.desktop
-%{_datadir}/kde4/services/kmymoney-nationalaccount-storageplugin.desktop
-%{_datadir}/kde4/services/kmymoney-nationalorders.desktop
-%{_datadir}/kde4/services/kmymoney-nationalordersui.desktop
-%{_datadir}/kde4/services/kmymoney-nationalstorageplugin.desktop
-%{_datadir}/kde4/services/kmymoney-sepaorders.desktop
-%{_datadir}/kde4/services/kmymoney-sepaordersui.desktop
-%{_datadir}/kde4/services/kmymoney-sepastorageplugin.desktop
-%{_datadir}/kde4/servicetypes/ibanbicdata.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-importerplugin.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-nationalaccountnumberplugin.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-onlinetaskui.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-payeeidentifierdelegate.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-plugin.desktop
-%{_datadir}/kde4/servicetypes/kmymoney-sqlstorageplugin.desktop
-%{_desktopdir}/kde4/kmymoney.desktop
 %{_iconsdir}/hicolor/*x*/apps/kmymoney.png
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kmymoney.png
 %{_mandir}/man1/kmymoney.1*
