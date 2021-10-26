@@ -15,35 +15,48 @@ Group:		X11/Applications
 Source0:	https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 # Source0-md5:	386a53cac09052aba2a343badabe4256
 URL:		https://kmymoney.org/
-Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-man.patch
-Patch2:		%{name}-types.patch
-Patch3:		0240-Fix-duplicated-symbol-compile-error-on-Windows.patch
+#Patch0:		%{name}-desktop.patch
+#Patch1:		%{name}-man.patch
+#Patch2:		%{name}-types.patch
+#Patch3:		0240-Fix-duplicated-symbol-compile-error-on-Windows.patch
+BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5DBus-devel
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt5Svg-devel
+BuildRequires:	Qt5Xml-devel
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5PrintSupport-devel
+BuildRequires:	Qt5Sql-devel
+BuildRequires:	Qt5Concurrent-devel
+BuildRequires:	Qt5Quick-devel
+BuildRequires:	ka5-akonadi-devel
+BuildRequires:	kf5-kactivities-devel
+BuildRequires:	kf5-kcmutils-devel
+BuildRequires:	kf5-kdewebkit-devel
+BuildRequires:	kf5-kholidays-devel
+BuildRequires:	kf5-kio-devel
+BuildRequires:	kf5-kitemmodels-devel
+BuildRequires:	kf5-kwallet-devel
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.5.1}
 BuildRequires:	automoc4
 BuildRequires:	boost-devel >= 1.33.1
 BuildRequires:	cmake >= 2.8.9
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
-# included in kde4-kdelibs-devel
-#BuildRequires:	gpgme-c++-devel
-#BuildRequires:	gpgme-qt4-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-cpp-devel >= 4.13.0}
-%{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt4-devel >= 4.13.0}
-BuildRequires:	kde4-kdelibs-devel >= 4.6.0
-BuildRequires:	kde4-kdepimlibs-devel >= 4.6.0
-BuildRequires:	libalkimia-devel >= 4.3.2
+#%{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
+BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
 BuildRequires:	libofx-devel >= 0.9.4
 BuildRequires:	pkgconfig
-BuildRequires:	qt4-build >= 4
+BuildRequires:	python3-devel
+BuildRequires:	qt5-build
 BuildRequires:	rpmbuild(macros) >= 1.606
 BuildRequires:	shared-mime-info
+BuildRequires:	sqlcipher-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	kde4-kdelibs >= 4.6.0
-Requires:	kde4-kdepimlibs >= 4.6.0
 Requires:	libalkimia >= 4.3.2
 Requires:	libofx >= 0.9.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,7 +80,6 @@ Summary(ru.UTF-8):	Хедеры для компилляции программ k
 Summary(uk.UTF-8):	Хедери для компіляції програм kmymoney
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	kde4-kdelibs-devel >= 4.6.0
 
 %description devel
 This package contains header files for kMyMoney.
@@ -96,7 +108,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	aqbanking >= 5.5.1
 Requires:	gwenhywfar >= 4.13.0
 Requires:	gwenhywfar-gui-cpp >= 4.13.0
-Requires:	gwenhywfar-gui-qt4 >= 4.13.0
+Requires:	gwenhywfar-gui-qt5 >= 4.13.0
 
 %description kbanking
 KBanking plugin for KMyMoney.
@@ -104,25 +116,25 @@ KBanking plugin for KMyMoney.
 %description kbanking -l pl.UTF-8
 Wtyczka KBanking dla KMyMoney.
 
-%package -n QtDesigner-plugin-kmymoney
+%package -n Qt5Designer-plugin-kmymoney
 Summary:	KMyMoney specific widget library for QtDesigner
 Summary(pl.UTF-8):	Biblioteka widgetów KMyMoney dla QtDesignera
 Group:		X11/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	QtDesigner >= 4
+Requires:	Qt5Designer
 
-%description -n QtDesigner-plugin-kmymoney
+%description -n Qt5Designer-plugin-kmymoney
 KMyMoney specific widget library for QtDesigner.
 
-%description -n QtDesigner-plugin-kmymoney -l pl.UTF-8
+%description -n Qt5Designer-plugin-kmymoney -l pl.UTF-8
 Biblioteka widgetów KMyMoney dla QtDesignera.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
 
 %build
 install -d build
@@ -291,6 +303,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kbanking.kcfg
 %endif
 
-%files -n QtDesigner-plugin-kmymoney
+%files -n Qt5Designer-plugin-kmymoney
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/qt4/plugins/designer/kmymoneywidgets.so
