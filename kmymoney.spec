@@ -6,7 +6,7 @@ Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney
 Version:	5.1.2
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
@@ -173,6 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libkmm_settings.so.5
 %attr(755,root,root) %{_libdir}/libkmm_widgets.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.5
+%dir %{_libdir}/qt5/plugins/kmymoney
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/budgetview.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/checkprinting.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/csvexporter.so
