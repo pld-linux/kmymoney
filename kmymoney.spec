@@ -43,7 +43,8 @@ BuildRequires:	kf5-kitemmodels-devel
 BuildRequires:	kf5-kwallet-devel
 BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
-# These two are not needed, but libical cmake file is broken
+# These are not needed, but libical cmake file is broken
+BuildRequires:	libical-c++-static
 BuildRequires:	libical-glib-static
 BuildRequires:	libical-static
 BuildRequires:	libofx-devel >= 0.9.4
