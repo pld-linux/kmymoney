@@ -1,7 +1,4 @@
 #
-# TODO: - do something with rest of templates
-#	- sqlcipher plugin (BR: sqlcipher-devel + qsqlite sources)
-#
 # Conditional build:
 %bcond_without	kbanking	# kbanking support
 
@@ -9,31 +6,24 @@ Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney
 Version:	5.1.2
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
 # Source0-md5:	386a53cac09052aba2a343badabe4256
 URL:		https://kmymoney.org/
 Patch0:		qt-deprecated.patch
+Patch1:		install.patch
+BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5DBus-devel
-BuildRequires:	Qt5Widgets-devel
-BuildRequires:	Qt5Svg-devel
-BuildRequires:	Qt5Xml-devel
-BuildRequires:	Qt5Test-devel
 BuildRequires:	Qt5PrintSupport-devel
-BuildRequires:	Qt5Sql-devel
-BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5Quick-devel
-BuildRequires:	ka5-akonadi-devel
-BuildRequires:	kf5-kactivities-devel
-BuildRequires:	kf5-kcmutils-devel
-BuildRequires:	kf5-kdewebkit-devel
-BuildRequires:	kf5-kholidays-devel
-BuildRequires:	kf5-kio-devel
-BuildRequires:	kf5-kitemmodels-devel
-BuildRequires:	kf5-kwallet-devel
+BuildRequires:	Qt5Sql-devel
+BuildRequires:	Qt5Svg-devel
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5Widgets-devel
+BuildRequires:	Qt5Xml-devel
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.5.1}
 BuildRequires:	automoc4
 BuildRequires:	boost-devel >= 1.33.1
@@ -43,6 +33,14 @@ BuildRequires:	gmp-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-cpp-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
+BuildRequires:	ka5-akonadi-devel
+BuildRequires:	kf5-kactivities-devel
+BuildRequires:	kf5-kcmutils-devel
+BuildRequires:	kf5-kdewebkit-devel
+BuildRequires:	kf5-kholidays-devel
+BuildRequires:	kf5-kio-devel
+BuildRequires:	kf5-kitemmodels-devel
+BuildRequires:	kf5-kwallet-devel
 BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
 # These two are not needed, but libical cmake file is broken
@@ -116,27 +114,17 @@ KBanking plugin for KMyMoney.
 %description kbanking -l pl.UTF-8
 Wtyczka KBanking dla KMyMoney.
 
-%package -n Qt5Designer-plugin-kmymoney
-Summary:	KMyMoney specific widget library for QtDesigner
-Summary(pl.UTF-8):	Biblioteka widgetów KMyMoney dla QtDesignera
-Group:		X11/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	Qt5Designer
-
-%description -n Qt5Designer-plugin-kmymoney
-KMyMoney specific widget library for QtDesigner.
-
-%description -n Qt5Designer-plugin-kmymoney -l pl.UTF-8
-Biblioteka widgetów KMyMoney dla QtDesignera.
-
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
 cd build
 %cmake .. \
+	-DKDE_INSTALL_PLUGINDIR=%{_libdir}/qt5/plugins \
+	-DKDE_INSTALL_DOCBUNDLEDIR:PATH=%{_defaultdocdir}/kde/HTML \
 	%{?with_kbanking:-DENABLE_KBANKING=ON} \
 	-DUSE_QT_DESIGNER=OFF
 
@@ -159,35 +147,65 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS README.Fileformats TODO
+%doc BUGS TODO
 %attr(755,root,root) %{_bindir}/kmymoney
-%attr(755,root,root) %{_libdir}/libkmm_kdchart.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkmm_kdchart.so.4
+%attr(755,root,root) %{_libdir}/libkmm_csvimportercore.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_csvimportercore.so.5
+%attr(755,root,root) %{_libdir}/libkmm_icons.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_icons.so.5
+%attr(755,root,root) %{_libdir}/libkmm_menus.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_menus.so.5
+%attr(755,root,root) %{_libdir}/libkmm_models.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_models.so.5
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkmm_mymoney.so.4
+%attr(755,root,root) %ghost %{_libdir}/libkmm_mymoney.so.5
+%attr(755,root,root) %{_libdir}/libkmm_payeeidentifier.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_payeeidentifier.so.5
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkmm_plugin.so.4
+%attr(755,root,root) %ghost %{_libdir}/libkmm_plugin.so.5
+%attr(755,root,root) %{_libdir}/libkmm_printer.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_printer.so.5
+%attr(755,root,root) %{_libdir}/libkmm_settings.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkmm_settings.so.5
 %attr(755,root,root) %{_libdir}/libkmm_widgets.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.4
-%attr(755,root,root) %{_libdir}/libkmm_payeeidentifier.so
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_iban_bic.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpayeeidentifier_iban_bic.so.4
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_iban_bic_widgets.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpayeeidentifier_iban_bic_widgets.so.4
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_nationalAccount.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libpayeeidentifier_nationalAccount.so.4
+%attr(755,root,root) %ghost %{_libdir}/libkmm_widgets.so.5
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/budgetview.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/checkprinting.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/csvexporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/csvimporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/forecastview.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/gncimporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/icalendarexporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_checkprinting.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_csvimporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_forecastview.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_icalendarexporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_qif.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kcm_xmlstorage.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/konlinetasks_sepa.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/ofximporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/onlinejoboutboxview.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/qifexporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/qifimporter.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/reconciliationreport.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/sqlstorage.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/weboob.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/xmlstorage.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/sqldrivers/qsqlcipher.so
+%{_datadir}/config.kcfg/kmymoney.kcfg
+%{_datadir}/kconf_update/kmymoney.upd
 %dir %{_datadir}/kmymoney
+%{_datadir}/kmymoney/checkprinting
 %{_datadir}/kmymoney/icons
 %{_datadir}/kmymoney/html
-%{_datadir}/kmymoney/ibanbicdata
 %{_datadir}/kmymoney/misc
 %{_datadir}/kmymoney/pics
 %dir %{_datadir}/kmymoney/templates
 %{_datadir}/kmymoney/templates/C
+%lang(da) %{_datadir}/kmymoney/templates/da
 %lang(de_AT) %{_datadir}/kmymoney/templates/de_AT
 %lang(de_CH) %{_datadir}/kmymoney/templates/de_CH
 %lang(de_DE) %{_datadir}/kmymoney/templates/de_DE
-%lang(dk) %{_datadir}/kmymoney/templates/dk
 %lang(el_GR) %{_datadir}/kmymoney/templates/el_GR
 %lang(en_CA) %{_datadir}/kmymoney/templates/en_CA
 %lang(en_GB) %{_datadir}/kmymoney/templates/en_GB
@@ -201,7 +219,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(gl_ES) %{_datadir}/kmymoney/templates/gl_ES
 %lang(hu_HU) %{_datadir}/kmymoney/templates/hu_HU
 %lang(it) %{_datadir}/kmymoney/templates/it
-%lang(ja) %{_datadir}/kmymoney/templates/jp
+%lang(ja_LP) %{_datadir}/kmymoney/templates/ja_JP
 %lang(nl_NL) %{_datadir}/kmymoney/templates/nl_NL
 %lang(pt_PT) %{_datadir}/kmymoney/templates/pt_PT
 %lang(pt_BR) %{_datadir}/kmymoney/templates/pt_BR
@@ -214,41 +232,57 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_HK) %{_datadir}/kmymoney/templates/zh_HK
 %lang(zh_TW) %{_datadir}/kmymoney/templates/zh_TW
 %{_datadir}/kmymoney/tips
-%{_datadir}/kmymoney/kmymoneyui.rc
-%{_datadir}/kconf_update/kmymoney.upd
-%{_datadir}/kmm_csvexport
-%{_datadir}/kmm_csvimport
-%{_datadir}/kmm_icalendarexport
-%{_datadir}/kmm_ofximport
-%{_datadir}/kmm_printcheck
-%{_datadir}/kmm_weboob
-%{_datadir}/appdata/kmymoney.appdata.xml
-%{_datadir}/config/csvimporterrc
-%{_datadir}/config.kcfg/kmymoney.kcfg
+%{_datadir}/kservices5/kcm_checkprinting.desktop
+%{_datadir}/kservices5/kcm_csvimporter.desktop
+%{_datadir}/kservices5/kcm_forecastview.desktop
+%{_datadir}/kservices5/kcm_icalendarexporter.desktop
+%{_datadir}/kservices5/kcm_qifexporter.desktop
+%{_datadir}/kservices5/kcm_qifimporter.desktop
+%{_datadir}/kservices5/kcm_xmlstorage.desktop
+%{_datadir}/kxmlgui5/checkprinting
+%{_datadir}/kxmlgui5/csvexporter
+%{_datadir}/kxmlgui5/csvimporter
+%{_datadir}/kxmlgui5/icalendarexporter
+%{_datadir}/kxmlgui5/ofximporter
+%{_datadir}/kxmlgui5/qifexporter
+%{_datadir}/kxmlgui5/qifimporter
+%{_datadir}/kxmlgui5/sqlstorage
+%{_datadir}/kxmlgui5/weboob
+%{_datadir}/metainfo/org.kde.kmymoney.appdata.xml
 %{_datadir}/mime/packages/x-kmymoney.xml
 %{_iconsdir}/hicolor/*x*/apps/kmymoney.png
 %{_iconsdir}/hicolor/*x*/mimetypes/application-x-kmymoney.png
+%{_desktopdir}/org.kde.kmymoney.desktop
 %{_mandir}/man1/kmymoney.1*
+%lang(ca) %{_mandir}/ca/man1/kmymoney.1*
+%lang(de) %{_mandir}/de/man1/kmymoney.1*
+%lang(it) %{_mandir}/it/man1/kmymoney.1*
+%lang(nl) %{_mandir}/nl/man1/kmymoney.1*
+%lang(pt) %{_mandir}/pt/man1/kmymoney.1*
+%lang(ot_BR) %{_mandir}/pt_BR/man1/kmymoney.1*
+%lang(ru) %{_mandir}/ru/man1/kmymoney.1*
+%lang(sv) %{_mandir}/sv/man1/kmymoney.1*
+%lang(uk) %{_mandir}/uk/man1/kmymoney.1*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkmm_kdchart.so
+%attr(755,root,root) %{_libdir}/libkmm_csvimportercore.so
+%attr(755,root,root) %{_libdir}/libkmm_icons.so
+%attr(755,root,root) %{_libdir}/libkmm_menus.so
+%attr(755,root,root) %{_libdir}/libkmm_models.so
 %attr(755,root,root) %{_libdir}/libkmm_mymoney.so
+%attr(755,root,root) %{_libdir}/libkmm_payeeidentifier.so
 %attr(755,root,root) %{_libdir}/libkmm_plugin.so
+%attr(755,root,root) %{_libdir}/libkmm_printer.so
+%attr(755,root,root) %{_libdir}/libkmm_settings.so
 %attr(755,root,root) %{_libdir}/libkmm_widgets.so
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_iban_bic.so
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_iban_bic_widgets.so
-%attr(755,root,root) %{_libdir}/libpayeeidentifier_nationalAccount.so
 %{_includedir}/kmymoney
 
 %if %{with kbanking}
 %files kbanking
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kmm_kbanking.so
-%{_datadir}/apps/kmm_kbanking
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/kbanking.so
 %{_datadir}/config.kcfg/kbanking.kcfg
+%{_datadir}/kmymoney/kbanking
+%{_datadir}/kxmlgui5/kbanking
 %endif
-
-%files -n Qt5Designer-plugin-kmymoney
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/qt4/plugins/designer/kmymoneywidgets.so

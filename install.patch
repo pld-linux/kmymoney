@@ -1,0 +1,45 @@
+--- kmymoney-5.1.2/kmymoney/plugins/checkprinting/CMakeLists.txt~	2021-06-23 17:49:12.000000000 +0200
++++ kmymoney-5.1.2/kmymoney/plugins/checkprinting/CMakeLists.txt	2021-10-28 00:09:45.693487454 +0200
+@@ -37,10 +37,10 @@
+         DESTINATION "${KXMLGUI_INSTALL_DIR}/checkprinting")
+ 
+ install(FILES check_template.html
+-        DESTINATION "${DATA_INSTALL_DIR}/checkprinting")
++        DESTINATION "${DATA_INSTALL_DIR}/kmymoney/checkprinting")
+ 
+ install(FILES check_template_green_linen.html
+-        DESTINATION "${DATA_INSTALL_DIR}/checkprinting")
++        DESTINATION "${DATA_INSTALL_DIR}/kmymoney/checkprinting")
+ 
+ # the KCM module
+ 
+--- kmymoney-5.1.2/kmymoney/plugins/checkprinting/checkprinting.cpp~	2021-06-23 17:49:12.000000000 +0200
++++ kmymoney-5.1.2/kmymoney/plugins/checkprinting/checkprinting.cpp	2021-10-28 00:10:57.069794465 +0200
+@@ -114,7 +114,7 @@
+ 
+ void CheckPrinting::readCheckTemplate()
+ {
+-    QString checkTemplateHTMLPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "checkprinting/check_template.html");
++    QString checkTemplateHTMLPath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "checkprinting/kmymoney/check_template.html");
+ 
+     if (PluginSettings::checkTemplateFile().isEmpty()) {
+         PluginSettings::setCheckTemplateFile(checkTemplateHTMLPath);
+--- kmymoney-5.1.2/kmymoney/plugins/kbanking/qml/chipTan/CMakeLists.txt~	2021-06-23 17:49:12.000000000 +0200
++++ kmymoney-5.1.2/kmymoney/plugins/kbanking/qml/chipTan/CMakeLists.txt	2021-10-28 00:12:26.596100176 +0200
+@@ -5,4 +5,4 @@
+   positionmarker.svg
+ )
+ 
+-install(FILES ${kbanking_qml_files} DESTINATION ${DATA_INSTALL_DIR}/kbanking/qml/chipTan/)
++install(FILES ${kbanking_qml_files} DESTINATION ${DATA_INSTALL_DIR}/kmymoney/kbanking/qml/chipTan/)
+--- kmymoney-5.1.2/kmymoney/plugins/kbanking/widgets/chiptandialog.cpp~	2021-06-23 17:49:12.000000000 +0200
++++ kmymoney-5.1.2/kmymoney/plugins/kbanking/widgets/chiptandialog.cpp	2021-10-28 00:13:41.875760163 +0200
+@@ -32,7 +32,7 @@
+     connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &chipTanDialog::reject);
+     connect(ui->tanInput, &QLineEdit::textEdited, this, &chipTanDialog::tanInputChanged);
+ 
+-    ui->declarativeView->setSource(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kbanking/qml/chipTan/ChipTan.qml"))));
++    ui->declarativeView->setSource(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kmymoney/kbanking/qml/chipTan/ChipTan.qml"))));
+ 
+     setFlickerFieldWidth(KBankingSettings::width());
+     setFlickerFieldClockSetting(KBankingSettings::clocksetting());
