@@ -57,6 +57,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	libalkimia >= 4.3.2
 Requires:	libofx >= 0.9.4
+Obsoletes:	kmymoney2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -78,6 +79,7 @@ Summary(ru.UTF-8):	Хедеры для компилляции программ k
 Summary(uk.UTF-8):	Хедери для компіляції програм kmymoney
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Obsoletes:	kmymoney2-devel
 
 %description devel
 This package contains header files for kMyMoney.
@@ -107,6 +109,7 @@ Requires:	aqbanking >= 5.5.1
 Requires:	gwenhywfar >= 4.13.0
 Requires:	gwenhywfar-gui-cpp >= 4.13.0
 Requires:	gwenhywfar-gui-qt5 >= 4.13.0
+Obsoletes:	kmymoney2-kbanking
 
 %description kbanking
 KBanking plugin for KMyMoney.
