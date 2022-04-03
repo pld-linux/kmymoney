@@ -22,6 +22,7 @@ BuildRequires:	Qt5Quick-devel
 BuildRequires:	Qt5Sql-devel
 BuildRequires:	Qt5Svg-devel
 BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5WebKit-devel
 BuildRequires:	Qt5Widgets-devel
 BuildRequires:	Qt5Xml-devel
 %{?with_kbanking:BuildRequires:	aqbanking-devel >= 5.5.1}
@@ -35,11 +36,15 @@ BuildRequires:	gmp-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
 BuildRequires:	ka5-akonadi-devel
 BuildRequires:	kf5-kactivities-devel
+BuildRequires:	kf5-karchive-devel
 BuildRequires:	kf5-kcmutils-devel
 BuildRequires:	kf5-kdewebkit-devel
 BuildRequires:	kf5-kholidays-devel
+BuildRequires:	kf5-kiconthemes-devel
 BuildRequires:	kf5-kio-devel
 BuildRequires:	kf5-kitemmodels-devel
+BuildRequires:	kf5-knotifications-devel
+BuildRequires:	kf5-ktextwidgets-devel
 BuildRequires:	kf5-kwallet-devel
 BuildRequires:	libalkimia-devel >= 8.0
 BuildRequires:	libical-c++-devel
