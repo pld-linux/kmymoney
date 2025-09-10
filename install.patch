@@ -36,7 +36,7 @@
 +++ kmymoney-5.1.2/kmymoney/plugins/kbanking/widgets/chiptandialog.cpp	2021-10-28 00:13:41.875760163 +0200
 @@ -32,7 +32,7 @@
      connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &chipTanDialog::reject);
-     connect(ui->tanInput, &QLineEdit::textEdited, this, &chipTanDialog::tanInputChanged);
+     connect(ui->tanInput, &QLineEdit::textEdited, this, &chipTanDialog::setTanInput);
  
 -    ui->declarativeView->setSource(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kbanking/qml/chipTan/ChipTan.qml"))));
 +    ui->declarativeView->setSource(QUrl(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kmymoney/kbanking/qml/chipTan/ChipTan.qml"))));

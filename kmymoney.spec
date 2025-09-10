@@ -5,18 +5,18 @@
 Summary:	Personal finance application similar to Microsoft Money
 Summary(pl.UTF-8):	Program do finansów osobistych, podobny do Microsoft Money
 Name:		kmymoney
-Version:	5.1.2
-Release:	5
+Version:	5.1.3
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
-# Source0-md5:	386a53cac09052aba2a343badabe4256
+# Source0-md5:	ff84e1a7baa8ec1f0d6636a55058f0d9
 URL:		https://kmymoney.org/
-Patch0:		qt-deprecated.patch
 Patch1:		install.patch
 BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5DBus-devel
+BuildRequires:	Qt5Keychain-devel
 BuildRequires:	Qt5PrintSupport-devel
 BuildRequires:	Qt5Quick-devel
 BuildRequires:	Qt5Sql-devel
@@ -31,6 +31,7 @@ BuildRequires:	boost-devel >= 1.33.1
 BuildRequires:	cmake >= 2.8.9
 BuildRequires:	doxygen
 BuildRequires:	gmp-devel
+BuildRequires:	grantlee-qt5-devel
 %{?with_kbanking:BuildRequires:	gwenhywfar-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-cpp-devel >= 4.13.0}
 %{?with_kbanking:BuildRequires:	gwenhywfar-gui-qt5-devel >= 4.13.0}
@@ -125,7 +126,6 @@ Wtyczka KBanking dla KMyMoney.
 
 %prep
 %setup -q
-%patch -P 0 -p1
 %patch -P 1 -p1
 
 %build
@@ -156,7 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc BUGS TODO
+%doc README.md
 %attr(755,root,root) %{_bindir}/kmymoney
 %attr(755,root,root) %{_libdir}/libkmm_csvimportercore.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkmm_csvimportercore.so.5
@@ -199,7 +199,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/qifimporter.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/reconciliationreport.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/sqlstorage.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/weboob.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/woob.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kmymoney/xmlstorage.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/sqldrivers/qsqlcipher.so
 %{_datadir}/config.kcfg/kmymoney.kcfg
@@ -257,7 +257,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kxmlgui5/qifexporter
 %{_datadir}/kxmlgui5/qifimporter
 %{_datadir}/kxmlgui5/sqlstorage
-%{_datadir}/kxmlgui5/weboob
+%{_datadir}/kxmlgui5/woob
 %{_datadir}/metainfo/org.kde.kmymoney.appdata.xml
 %{_datadir}/mime/packages/x-kmymoney.xml
 %{_iconsdir}/hicolor/*x*/apps/kmymoney.png
