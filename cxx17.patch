@@ -1,0 +1,14 @@
+gpgme++ 2.x uses std::string_view in public headers, so consumers need C++17.
+Upstream master already sets 17; the 5.2 branch was left behind.
+
+--- kmymoney-5.2.2/CMakeLists.txt	2026-02-22 08:40:14.000000000 +0100
++++ kmymoney-5.2.2/CMakeLists.txt	2026-08-22 23:01:35.631461368 +0200
+@@ -293,7 +293,7 @@
+ 
+ 
+ add_definitions(-DQT_USE_QSTRINGBUILDER -DQT_NO_CAST_TO_ASCII -DQT_NO_URL_CAST_FROM_STRING -DQT_NO_KEYWORDS)
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
